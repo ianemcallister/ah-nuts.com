@@ -18,7 +18,7 @@ app.use(jsonParser); // for parsing application/json
 app.use(urlencodedParser); // for parsing application/x-www-form-urlencoded
 
 //tell it the folder to serve
-app.use(express.static('../dist'));
+app.use(express.static('dist'));
 
 //open the port for local development
 app.listen(port,function() {

@@ -1,0 +1,33 @@
+body {
+	background:url("../source/chalkbg.png");
+}
+
+@font-face {
+    font-family: "FrederickatheGreat-Regular";
+    src: url(../fonts/fredericka-the-great/FrederickatheGreat-Regular.ttf) format("truetype");
+}
+
+.circleBtn {
+  font-family: FrederickatheGreat-Regular;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 50px;
+  background-color: green; 
+}
+
+#heroImage {
+	background-image: url('../source/spinningNuts_320.jpg');
+	width: 100%;
+	height: 150px;
+}
+
+#testing {
+	font-family: FrederickatheGreat-Regular;
+	font-size: 25px;
+	color: #d6d963;
+	text-align: center;
+}

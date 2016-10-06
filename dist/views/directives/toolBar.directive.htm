@@ -1,0 +1,62 @@
+<HEADER>
+  
+  <nav class="navbar navbar">
+    
+    <div class="container-fluid">
+      
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span ng-if='!vm.loggedIn' class="glyphicon glyphicon-log-in"></span>
+          <span ng-if='vm.loggedIn' class="glyphicon glyphicon-log-out" ng-click='vm.logout()'></span> 
+        </button>
+
+        <a class="navbar-brand" href="#/" id='testing'>Ah-Nuts!</a> <!---->
+
+      </div>
+
+      <div class="collapse navbar-collapse" id="myNavbar">
+
+        <ul class="nav navbar-nav navbar-right" ng-if='!vm.loggedIn'>
+          <li>
+            <label for="navbarUserEmail">
+              <input  name='navbarUserEmail'
+                      type="text" 
+                      class='navbarInputs' 
+                      id='navbarUserEmail' 
+                      placeholder="email" 
+                      ng-model='vm.email' 
+                      ng-style=''>
+            </label>
+          </li>
+          <li>
+            <label for="navbarUserPass">
+              <input  name='navbarUserPass'
+                      type="password" 
+                      class='navbarInputs' 
+                      id='navbarUserPass' 
+                      placeholder="password" 
+                      ng-model='vm.password' 
+                      ng-style=''>
+            </label>
+          </li>
+          <li>
+            <label for="submitUserLogin">
+              <button   name='submitUserLogin'
+                        id='submitUserLogin' 
+                        class='navbarInputs btn btn-success' 
+                        ng-click='vm.loginRegisteredUser()' 
+                        ng-style='topMenuCtrl.deviceWidth'>
+                          Login</button>
+            </label>
+          </li>
+        </ul>
+
+        
+      </div>
+
+    </div>
+  
+  </nav>
+
+</HEADER>

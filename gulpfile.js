@@ -23,16 +23,6 @@ gulp.task('copy-html', function() {
 		.pipe(gulp.dest('dist/views'));
 });
 
-gulp.task('styles-dist', function() {
-	gulp.src('public/scss/**/*.scss')
-		.pipe(sass().on('error', sass.logError))
-		.pipe(autoprefixer({
-			browsers: ['last 2 versions']
-		}))
-		.pipe(gulp.dest('dist/css'));
-		//.pipe(browserSync.stream());
-});
-
 gulp.task('scripts-dist', function() {
 	gulp.src([
 		'public/**/*.js'
@@ -43,5 +33,14 @@ gulp.task('scripts-dist', function() {
 		.pipe(uglify())
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('dist/scripts'));
+});
+
+gulp.task('styles-dist', function() {
+	gulp.src('public/styles/**/*.css')
+		.pipe(sass().on('error', sass.logError))
+		.pipe(autoprefixer({
+			browsers: ['last 2 versions']
+		}))
+		.pipe(gulp.dest('dist/styles'));
 });
 
