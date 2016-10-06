@@ -5,6 +5,13 @@ body {
   font-family: "FrederickatheGreat-Regular";
   src: url(../fonts/fredericka-the-great/FrederickatheGreat-Regular.ttf) format("truetype"); }
 
+.chalk {
+  font-family: FrederickatheGreat-Regular; }
+
+.headerChalk {
+  font-family: FrederickatheGreat-Regular;
+  font-size: 18px; }
+
 .circleBtn {
   font-family: FrederickatheGreat-Regular;
   width: 100px;
