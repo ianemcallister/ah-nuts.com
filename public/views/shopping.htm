@@ -1,16 +1,24 @@
 <div>
 	
-	<!--Select Size & Quantity-->
-	<buy-size></buy-size>
+	<!--Select Sizes-->
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+		<select-packaging packaging-selected='vm.cart.selectedPackaging' add-a-size='vm.cart.addASize'></select-packaging>
+	</div>
 	
-	<!--Select Flavors-->
-	<buy-flavors></buy-flavors>
+	<!--Fill Packaging-->
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+		<buy-flavors></buy-flavors>
+	</div>
 	
-	<!--See Empties-->
-	<see-empties></see-empties>
+	<!--See Empties
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+		<see-empties></see-empties>
+	</div>-->
 
 	<!--See Fulls-->
-	<see-fulls></see-fulls>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+		<see-fulls></see-fulls>
+	</div>
 
 	<!--Select Shipping-->
 	<button class="btn btn-warning">Check-Out</button>

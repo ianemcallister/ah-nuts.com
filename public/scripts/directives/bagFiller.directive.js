@@ -7,17 +7,17 @@
 
 angular
 	.module('ahNutsWebApp')
-	.directive('buySize', buySize);
+	.directive('bagFiller', bagFiller);
 
 /* @ngInject */
-function buySize() {
+function bagFiller() {
 	var directive = {
 		restrict: 'AECM',
-		templateUrl: 'views/directives/buySize.directive.htm',
+		templateUrl: 'views/directives/bagFiller.directive.htm',
 		replace: true,
 		scope: {},
 		link: linkFunc,
-		controller: buySizeController,
+		controller: bagFillerController,
 		controllerAs: 'vm',
 		bindToController: true
 	}
@@ -26,9 +26,9 @@ function buySize() {
 	function linkFunc(scope, el, attr, ctrl) {
     }
 
-    buySizeController.$inject = ['$scope', '$log'];
+    bagFillerController.$inject = ['$scope', '$log'];
     /* @ngInject */
-    function buySizeController($scope, $log) {
+    function bagFillerController($scope, $log) {
 	    var vm = this;
 
 	}

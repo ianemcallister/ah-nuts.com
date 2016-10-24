@@ -1,0 +1,30 @@
+<div>
+	<!--Header-->
+	<div class='headerChalk' style="color:green">Choose Your Sizes:</div>
+
+	<!--Container-->
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row" style='color:yellow'>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.addASize()("small")'><img src='../source/small.svg' alt='small' id='smallCone'></div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.addASize()("medium")'><img src='../source/small.svg' alt='small' id='smallCone'></div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.sizeBtnClicked("large")'><img src='../source/small.svg' alt='small' id='smallCone'></div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.sizeBtnClicked("platter")'><div id='platterPackage'></div></div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row" style='color:yellow'>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.addASize()("small")'>Small</div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.addASize()("medium")'>Medium</div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.sizeBtnClicked("large")'>Large</div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.sizeBtnClicked("platter")'>Platter</div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row" style='color:yellow'>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.addASize()("small")'>4 oz</div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.addASize()("medium")'>8 oz</div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.sizeBtnClicked("large")'>16 oz</div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.sizeBtnClicked("platter")'>20 oz</div>
+	</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row" style='color:yellow'>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.sizeBtnClicked("smalls")'>{{vm.packagingSelected.smalls}}</div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.sizeBtnClicked("meidums")'>{{vm.packagingSelected.mediums}}</div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.sizeBtnClicked("larges")'>{{vm.packagingSelected.larges}}</div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.sizeBtnClicked("platters")'>{{vm.packagingSelected.platters}}</div>
+	</div>
+</div>

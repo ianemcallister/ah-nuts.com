@@ -1,1 +1,13 @@
+#ignore config files
+/server/config/local.env.js
+
+#ignore any images
+
+#ignore node modules
 node_modules
+
+#ignore any logs
+*.log
+
+#ignore the library files
+lib

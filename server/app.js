@@ -2,6 +2,8 @@
 //declare dependencies
 var express = require('express');
 var bodyParser = require('body-parser');
+var firebase = require("firebase");
+var envVars = require('./config/local.env');
 
 //define the app
 var app = express();
@@ -16,6 +18,16 @@ var jsonParser = bodyParser.json();
 //define our body parsers
 app.use(jsonParser); // for parsing application/json
 app.use(urlencodedParser); // for parsing application/x-www-form-urlencoded
+
+// Initialize Firebase
+var config = {
+  apiKey: envVars.APIKEY,
+  authDomain: envVars.AUTHDOMAIN,
+  databaseURL: envVars.DATABASEURL,
+  storageBucket: envVars.STORAGEBUCKET,
+};
+firebase.initializeApp(config);
+
 
 //tell it the folder to serve
 app.use(express.static('dist'));

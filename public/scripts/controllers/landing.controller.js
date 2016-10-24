@@ -13,6 +13,8 @@ function landingController($log, $routeParams, $location) {
 	//local methods
 	function init() {
 		//define the state of this page
+		
+		
 
 	};
 

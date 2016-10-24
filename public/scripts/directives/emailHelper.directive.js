@@ -7,17 +7,17 @@
 
 angular
 	.module('ahNutsWebApp')
-	.directive('locationsToday', locationsToday);
+	.directive('emailHelper', emailHelper);
 
 /* @ngInject */
-function locationsToday() {
+function emailHelper() {
 	var directive = {
 		restrict: 'AECM',
-		templateUrl: 'views/directives/locationsToday.directive.htm',
+		templateUrl: 'views/directives/emailHelper.directive.htm',
 		replace: true,
 		scope: {},
 		link: linkFunc,
-		controller: locationsTodayController,
+		controller: emailHelperController,
 		controllerAs: 'vm',
 		bindToController: true
 	}
@@ -26,15 +26,11 @@ function locationsToday() {
 	function linkFunc(scope, el, attr, ctrl) {
     }
 
-    locationsTodayController.$inject = ['$scope', '$log', 'backendComFactory'];
+    emailHelperController.$inject = ['$scope', '$log'];
     /* @ngInject */
-    function locationsTodayController($scope, $log, backendComFactory) {
+    function emailHelperController($scope, $log) {
 	    var vm = this;
-	    var backend = backendComFactory;
 
-	    vm.todaysMarkets = backend.get();
-
-	    console.log(vm.todaysMarkets);
 	}
 
 	return  directive;
