@@ -2,12 +2,16 @@
 	
 	<!--Select Sizes-->
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
-		<select-packaging packaging-selected='vm.cart.selectedPackaging' add-a-size='vm.cart.addASize'></select-packaging>
+		<select-packaging 	packaging-selected='vm.cart.selectedPackaging' 
+							add-a-size='vm.cart.addASize'>
+		</select-packaging>
 	</div>
 	
 	<!--Fill Packaging-->
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
-		<buy-flavors></buy-flavors>
+		<select-flavors		packaging-selected='vm.cart.selectedPackaging'
+							remove-a-size='vm.cart.removeASize'>
+		</select-flavors>
 	</div>
 	
 	<!--See Empties

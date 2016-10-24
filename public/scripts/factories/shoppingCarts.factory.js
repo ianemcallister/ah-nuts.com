@@ -43,20 +43,30 @@ function shoppingCartsFactory($log) {
 			discounts: 0
 		},
 		addASize: addASize,
-		removeAsize: removeAsize,
+		removeASize: removeASize,
 		fillAPackage: fillAPackage,
 		removeAPackage: removeAPackage
 	};
 
-	function addASize(size) {
+	function addASize(startingValue) {
+		//TODO: REMOVE THIS LATER
+		//notify the user what is coming in and what is going out
+		$log.info('got this', startingValue, ' returning this ', startingValue + 1);
 
-		
-
-		$log.info('got this', size, ' returning this ', size +1);
-
-		return size + 1;
+		//incriment the starting value 
+		return startingValue + 1;
 	}
-	function removeAsize(size) {}
+	function removeASize(startingValue) {
+		
+		if(startingValue > 0) {
+			//TODO: REMOVE THIS LATER
+			//notify the user what is coming in and what is going out
+			$log.info('got this', startingValue, ' returning this ', startingValue - 1);
+
+			//incriment the starting value 
+			return startingValue - 1;
+		} else return 0;		
+	}
 	function fillAPackage(size) {}
 	function removeAPackage(size, id) {}
 

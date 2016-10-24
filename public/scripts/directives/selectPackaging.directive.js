@@ -35,7 +35,7 @@ function selectPackaging() {
 	    var vm = this;
 
 	    vm.sizeBtnClicked = function(size) {
-	    	
+	    	//incriment the count of this package that was clicked
 	    	vm.packagingSelected[size] = vm.addASize()(vm.packagingSelected[size]);
 
 	    }
