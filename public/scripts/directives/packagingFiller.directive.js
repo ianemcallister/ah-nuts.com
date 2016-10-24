@@ -7,17 +7,19 @@
 
 angular
 	.module('ahNutsWebApp')
-	.directive('bagFiller', bagFiller);
+	.directive('packagingFiller', packagingFiller);
 
 /* @ngInject */
-function bagFiller() {
+function packagingFiller() {
 	var directive = {
 		restrict: 'AECM',
-		templateUrl: 'views/directives/bagFiller.directive.htm',
+		templateUrl: 'views/directives/packagingFiller.directive.htm',
 		replace: true,
-		scope: {},
+		scope: {
+			currentlyFilling: "="
+		},
 		link: linkFunc,
-		controller: bagFillerController,
+		controller: packagingFillerController,
 		controllerAs: 'vm',
 		bindToController: true
 	}
@@ -26,9 +28,9 @@ function bagFiller() {
 	function linkFunc(scope, el, attr, ctrl) {
     }
 
-    bagFillerController.$inject = ['$scope', '$log'];
+    packagingFillerController.$inject = ['$scope', '$log'];
     /* @ngInject */
-    function bagFillerController($scope, $log) {
+    function packagingFillerController($scope, $log) {
 	    var vm = this;
 
 	}

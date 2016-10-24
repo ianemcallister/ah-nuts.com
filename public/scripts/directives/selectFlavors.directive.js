@@ -34,6 +34,12 @@ function selectFlavors() {
     function selectFlavorsController($scope, $log) {
 	    var vm = this;
 
+
+	    //assign a bag to be filled
+	    vm.fillAPackage = function(packaging) {
+	    	vm.currentlyFilling.packaging = packaging;
+	    }
+
 	    vm.sizeBtnClicked = function(packaging) {
 	    	$log.info('clikced', packaging, vm.packagingSelected[packaging]);
 	    	//decrement the count of this package that was clicked

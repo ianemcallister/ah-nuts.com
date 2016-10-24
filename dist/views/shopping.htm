@@ -2,17 +2,20 @@
 	
 	<!--Select Sizes-->
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
-		<select-packaging 	packaging-selected='vm.cart.selectedPackaging' 
-							add-a-size='vm.cart.addASize'>
+		<select-packaging 	currently-filling="vm.currentlyFilling">
 		</select-packaging>
 	</div>
 	
 	<!--Fill Packaging-->
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+		<packaging-filler style='color:yellow' currently-filling="vm.currentlyFilling">
+		</packaging-filler>
+	</div>
+	<!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
 		<select-flavors		packaging-selected='vm.cart.selectedPackaging'
 							remove-a-size='vm.cart.removeASize'>
 		</select-flavors>
-	</div>
+	</div>-->
 	
 	<!--See Empties
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">

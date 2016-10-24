@@ -16,8 +16,7 @@ function selectPackaging() {
 		templateUrl: 'views/directives/selectPackaging.directive.htm',
 		replace: true,
 		scope: {
-			packagingSelected: '=',
-			addASize: "&"
+			currentlyFilling: '='
 		},
 		link: linkFunc,
 		controller: selectPackagingController,
@@ -35,9 +34,9 @@ function selectPackaging() {
 	    var vm = this;
 
 	    vm.sizeBtnClicked = function(size) {
-	    	//incriment the count of this package that was clicked
-	    	vm.packagingSelected[size] = vm.addASize()(vm.packagingSelected[size]);
 
+	    	vm.currentlyFilling.packaging = size;
+	    	$log.info('got this size, ', size);
 	    }
 
 	}

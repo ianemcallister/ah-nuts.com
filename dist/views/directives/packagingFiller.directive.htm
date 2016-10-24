@@ -1,14 +1,16 @@
 <div>
-	<h4 style='color: yellow'>bag filler</h4>
+	<!--Header-->
+	<div class='headerChalk' style="color:green">Fill It Up:</div>
 	
 	<!--Only show if a packaging has been selected-->
 	<div ng-if='vm.currentlyFilling.packaging'>
 		
-		Type: {{vm.currentlyFilling.packaging}}	
+		Type: {{vm.currentlyFilling.packaging}}
+		<button class='btn btn-warning'>discard</button>	
 
-		<div ng-if='vm.currentlyFilling.packaging == "platters"' id='platterPackageLarge'></div>
+		<div ng-if='vm.currentlyFilling.packaging == "platter"' id='platterPackageLarge'></div>
 
-		<div ng-if='vm.currentlyFilling.packaging != "platters"' id='conePackageLarge'></div>
+		<div ng-if='vm.currentlyFilling.packaging != "platter"' id='conePackageLarge'></div>
 		
 		<!--List of flavors-->
 		<ul>
