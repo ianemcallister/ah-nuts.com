@@ -14,13 +14,25 @@ function shoppingController($log, shoppingCartsFactory) {
     vm.currentlyFilling = {
     	packaging: undefined,
     	flavors: {
-    		SRPecans: 0.00,
-    		DRPecans: 0.00,
-    		CNPecans: 0.00,
-    		SRAlmond: 0.00,
-    		CNAlmond: 0.00,
-    		SRCashew: 0.00,
-    		SRPeanut: 0.00
+    		noOfFlavors: 0,
+    		selected: {
+	    		SRPecans: false,
+	    		DRPecans: false,
+	    		CNPecans: false,
+	    		SRAlmond: false,
+	    		CNAlmond: false,
+	    		SRCashew: false,
+	    		SRPeanut: false
+    		},
+    		proportions: {
+	    		SRPecans: 0.00,
+	    		DRPecans: 0.00,
+	    		CNPecans: 0.00,
+	    		SRAlmond: 0.00,
+	    		CNAlmond: 0.00,
+	    		SRCashew: 0.00,
+	    		SRPeanut: 0.00
+    		}
     	}
     };
 

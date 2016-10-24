@@ -6,21 +6,56 @@
 	<div ng-if='vm.currentlyFilling.packaging'>
 		
 		Type: {{vm.currentlyFilling.packaging}}
-		<button class='btn btn-warning'>discard</button>	
+		<button class='btn btn-warning' ng-click='vm.currentlyFilling.packaging=undefined'>discard</button>	
 
 		<div ng-if='vm.currentlyFilling.packaging == "platter"' id='platterPackageLarge'></div>
 
 		<div ng-if='vm.currentlyFilling.packaging != "platter"' id='conePackageLarge'></div>
 		
 		<!--List of flavors-->
-		<ul>
-			<li>Secret Recipe Pecans</li>
-			<li>Drunken Pecans</li>
-			<li>Cinnamon Pecans</li>
-			<li>Secret Recipe Almonds</li>
-			<li>Cinnamon Pecans</li>
-			<li>Secret Recipe Cashews</li>
-			<li>Secret Recipe Peanuts</li>
+		<ul style='list-style:none'>
+			<li ng-click='vm.pickAFlavor("SRPecans")'>
+				<label for="SRP">
+					<input type="checkbox" ng-model='vm.currentlyFilling.flavors.selected.SRPecans'>
+					Secret Recipe Pecans
+				</label>
+			</li>
+			<li ng-click='vm.pickAFlavor("DRPecans")'>
+				<label for="DRP">
+					<input type="checkbox" ng-model='vm.currentlyFilling.flavors.selected.DRPecans'>
+					Drunken Pecans
+				</label>
+			</li>
+			<li ng-click='vm.pickAFlavor("CNPecans")'>
+				<label for="CNP">
+					<input type="checkbox" ng-model='vm.currentlyFilling.flavors.selected.CNPecans'>
+					Cinnamon Pecans
+				</label>
+			</li>
+			<li ng-click='vm.pickAFlavor("SRAlmond")'>
+				<label for="SRA">
+					<input type="checkbox" ng-model='vm.currentlyFilling.flavors.selected.SRAlmond'>
+					Secret Recipe Almonds
+				</label>
+			</li>
+			<li ng-click='vm.pickAFlavor("CNAlmond")'>
+				<label for="CNA">
+					<input type="checkbox" ng-model='vm.currentlyFilling.flavors.selected.CNAlmond'>
+					Cinnamon Almonds
+				</label>
+			</li>
+			<li ng-click='vm.pickAFlavor("SRCashew")'>
+				<label for="SRC">
+					<input type="checkbox" ng-model='vm.currentlyFilling.flavors.selected.SRCashew'>
+					Secret Recipe Cashews
+				</label>
+			</li>
+			<li ng-click='vm.pickAFlavor("SRPeanut")'>
+				<label for="SPE">
+					<input type="checkbox" ng-model='vm.currentlyFilling.flavors.selected.SRPeanut'>
+					Secret Recipe Peanuts
+				</label>
+			</li>
 		</ul>
 
 		<button class='btn btn-success'>Add To Cart</button>
