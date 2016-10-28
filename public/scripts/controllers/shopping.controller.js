@@ -2,10 +2,10 @@ angular
     .module('ahNutsWebApp')
     .controller('shoppingController', shoppingController);
 
-shoppingController.$inject = ['$log', 'shoppingCartsFactory'];
+shoppingController.$inject = ['$log', 'shoppingCartsFactory', 'priceListFactory'];
 
 /* @ngInject */
-function shoppingController($log, shoppingCartsFactory) {
+function shoppingController($log, shoppingCartsFactory, priceListFactory) {
 
 	//define the local variable
 	var vm = this;
@@ -38,5 +38,6 @@ function shoppingController($log, shoppingCartsFactory) {
 
 	//add the shopping cart to this controller, for access from directives
 	vm.cart = shoppingCartsFactory;
+	vm.priceList = priceListFactory;
 
 }

@@ -44,7 +44,7 @@ function shoppingCartsFactory($log) {
 		},
 		addASize: addASize,
 		removeASize: removeASize,
-		fillAPackage: fillAPackage,
+		addFilledPackage: addFilledPackage,
 		removeAPackage: removeAPackage
 	};
 
@@ -67,7 +67,9 @@ function shoppingCartsFactory($log) {
 			return startingValue - 1;
 		} else return 0;		
 	}
-	function fillAPackage(size) {}
+	function addFilledPackage(newPackage) {
+		$log.info('adding a new package now', newPackage);
+	}
 	function removeAPackage(size, id) {}
 
 	

@@ -8,7 +8,10 @@
 	
 	<!--Fill Packaging-->
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
-		<packaging-filler style='color:yellow' currently-filling="vm.currentlyFilling">
+		<packaging-filler 	style='color:yellow'
+							pricing='vm.priceList' 
+							currently-filling="vm.currentlyFilling"
+							add-filled-package="vm.cart.addFilledPackage">
 		</packaging-filler>
 	</div>
 	<!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">

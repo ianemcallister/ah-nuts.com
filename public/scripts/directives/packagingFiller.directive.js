@@ -16,7 +16,9 @@ function packagingFiller() {
 		templateUrl: 'views/directives/packagingFiller.directive.htm',
 		replace: true,
 		scope: {
-			currentlyFilling: "="
+			pricing: "=",
+			currentlyFilling: "=",
+			addFilledPackage: "&"
 		},
 		link: linkFunc,
 		controller: packagingFillerController,
@@ -33,6 +35,9 @@ function packagingFiller() {
     function packagingFillerController($scope, $log) {
 	    var vm = this;
 
+	    //view model variables
+	    vm.qty = 1;
+
 	    function equalSplit(divisions) {
 	    	return 1 / divisions;
 	    }
@@ -48,7 +53,74 @@ function packagingFiller() {
 
 	    	})
 
-	    	$log.info(vm.currentlyFilling.flavors.proportions);
+	    }
+
+	    function supplyMixtureObject(flavorProportions) {		//receive all the proprtions
+	    	//initialize local variable
+	    	var returnObject = {};
+
+	    	//cycle through all the flavors, if proportion is great than 
+	    	Object.keys(flavorProportions).forEach(function(flavor) {
+
+	    		if(flavorProportions[flavor] > 0)
+	    			returnObject[flavor] = flavorProportions[flavor]
+
+	    	});
+
+	    	return returnObject		//return a distilled list of proportions
+	    }
+
+	    function checkForPeanuts(packaging, mixture) {
+
+	    	var hasPeanuts = undefined;
+
+	    	//is this a mixture or a platter?
+	    	if(packaging=='platter') {
+	    		//a platter with at least one section of peanuts has peanuts
+	    		if(mixture.SRPeanut > 0) hasPeanuts = true;
+	    		else hasPeanuts = false;
+
+	    	} else {
+	    		//a mixture must have at least 50% peanuts to be considered peanut
+	    		if(mixture.SRPeanut >= 0.5) hasPeanuts = true;
+	    		else hasPeanuts = false;
+	    	}
+
+	    	return hasPeanuts;
+	    }
+
+	    function calculatePurchasePrice(packaging, mixture) {
+	    	
+	    	//define the local variable
+	    	var salePrice = 0;
+	    	var peanutStatus = 'withoutPeanuts';
+	    	var peanutSections = 0;
+
+	    	//determine peanuts presence and qty
+	    	var peanutsArePresent = checkForPeanuts(packaging, mixture);
+
+	    	if(peanutsArePresent) {
+	    		//set the object value
+	    		peanutStatus = 'withPeanuts';
+	    		//calculate the number of peanut sections
+	    		peanutSections = mixture.SRPeanut * 4;
+	    	}
+
+	    	//packaging differs for platters and bags
+	    	if(packaging=='platter') {
+	    		salePrice = vm.pricing[peanutStatus][packaging][peanutSections];
+	    	} else {
+	    		salePrice = vm.pricing[peanutStatus][packaging];
+	    	}
+
+	    	return salePrice;
+	    }
+
+	    function calculateItemSubtotal(packaging, mixture, qty) {
+
+	    	var purchasePrice = calculatePurchasePrice(packaging, mixture);
+
+	    	return purchasePrice * qty;
 	    }
 
 	    //viewmodel methods
@@ -69,6 +141,25 @@ function packagingFiller() {
 
 	    	//notify the user
 	    	$log.info('# of Flavors', vm.currentlyFilling.flavors.noOfFlavors, "split", equalPortions, 'propritions', vm.currentlyFilling.flavors.proportions);
+	    }
+
+	    vm.addToCart = function() {		//add the current item to the cart
+	    	
+	    	//distill the mixture
+	    	var thisPackaging = vm.currentlyFilling.packaging;
+	    	var thisMixture = supplyMixtureObject(vm.currentlyFilling.flavors.proportions);
+	    	var thisQuantity = vm.qty;
+
+	    	//format the object to be added to the cart
+	    	var newPackage = {
+	    		selectedPackaging: thisPackaging,
+	    		mixture: thisMixture,
+	    		qty: thisQuantity,
+	    		subtotatl: calculateItemSubtotal(thisPackaging, thisMixture, thisQuantity)
+	    	};
+
+	    	//pass it to the cart
+	    	vm.addFilledPackage()(newPackage);
 	    }
 
 	}
