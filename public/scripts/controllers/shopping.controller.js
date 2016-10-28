@@ -2,42 +2,28 @@ angular
     .module('ahNutsWebApp')
     .controller('shoppingController', shoppingController);
 
-shoppingController.$inject = ['$log', 'shoppingCartsFactory', 'priceListFactory'];
+shoppingController.$inject = ['$log', 'shoppingCartsFactory', 'fillingsFactory', 'priceListFactory', 'stateFactory'];
 
 /* @ngInject */
-function shoppingController($log, shoppingCartsFactory, priceListFactory) {
+function shoppingController($log, shoppingCartsFactory, fillingsFactory, priceListFactory, stateFactory) {
 
 	//define the local variable
 	var vm = this;
 
-	//declare local variables
-    vm.currentlyFilling = {
-    	packaging: undefined,
-    	flavors: {
-    		noOfFlavors: 0,
-    		selected: {
-	    		SRPecans: false,
-	    		DRPecans: false,
-	    		CNPecans: false,
-	    		SRAlmond: false,
-	    		CNAlmond: false,
-	    		SRCashew: false,
-	    		SRPeanut: false
-    		},
-    		proportions: {
-	    		SRPecans: 0.00,
-	    		DRPecans: 0.00,
-	    		CNPecans: 0.00,
-	    		SRAlmond: 0.00,
-	    		CNAlmond: 0.00,
-	    		SRCashew: 0.00,
-	    		SRPeanut: 0.00
-    		}
-    	}
-    };
-
-	//add the shopping cart to this controller, for access from directives
+	//import required objects
+    vm.currentlyFilling = fillingsFactory;
 	vm.cart = shoppingCartsFactory;
 	vm.priceList = priceListFactory;
+
+	//state tracking
+	vm.currentState = stateFactory.defaultState('shopping');
+
+	//view model functions
+
+	//when a tab is selected change the tab
+	vm.updateSelectedTab = function(tab) {
+		vm.currentState.activeTab = tab;
+		$log.info('changing to tab', vm.currentState.activeTab);
+	}
 
 }

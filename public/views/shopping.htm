@@ -1,35 +1,51 @@
 <div>
 	
-	<!--Select Sizes-->
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
-		<select-packaging 	currently-filling="vm.currentlyFilling">
-		</select-packaging>
+	<!--Header-->
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row" style='color:yellow'>
+		<h2 style='text-align: center' id='shoppingHeader'>Shopping</h2>
 	</div>
-	
-	<!--Fill Packaging-->
+
+	<!--Cart Summary-->
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row" style='color:yellow'>
+		<h6>Cart Summary</h6>
+	</div>
+
+	<!--Progress Display-->
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row" style='color:yellow'>
+		
+		<shopping-progress-bar	active-tab='vm.currentState.activeTab'
+								change-tab='vm.updateSelectedTab'>
+								
+		</shopping-progress-bar>
+
+	</div>	
+
+	<!--interaction Window-->
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
-		<packaging-filler 	style='color:yellow'
+		
+		<!--Select A Size-->
+		<select-packaging 	ng-if='vm.currentState.activeTab==0'
+							currently-filling="vm.currentlyFilling">
+		</select-packaging>
+		
+		<!--Fill Packaging-->
+		<packaging-filler 	ng-if='vm.currentState.activeTab==1'
+							style='color:yellow'
 							pricing='vm.priceList' 
 							currently-filling="vm.currentlyFilling"
 							add-filled-package="vm.cart.addFilledPackage">
 		</packaging-filler>
+
+		<!--Select Shipping or Pickup-->
+
+		<!--Provide Payment-->	
+
 	</div>
-	<!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
-		<select-flavors		packaging-selected='vm.cart.selectedPackaging'
-							remove-a-size='vm.cart.removeASize'>
-		</select-flavors>
-	</div>-->
 	
-	<!--See Empties
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
-		<see-empties></see-empties>
-	</div>-->
+	<!--Add Another Package-->
+	<button class="col-xs-12 col-sm-12 col-md-12 col-lg-12 btn btn-primary">Add Another</button>
 
-	<!--See Fulls-->
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
-		<see-fulls></see-fulls>
-	</div>
+	<!--Proceed To Checkout-->
+	<button class="col-xs-12 col-sm-12 col-md-12 col-lg-12 btn btn-warning">Check-Out</button>
 
-	<!--Select Shipping-->
-	<button class="btn btn-warning">Check-Out</button>
 </div>

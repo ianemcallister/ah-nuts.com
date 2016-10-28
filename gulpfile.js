@@ -14,6 +14,12 @@ gulp.task('dist', [
 	'scripts-dist'
 ]);
 
+gulp.task('dev', [
+	'copy-html',
+	'styles-dist',
+	'scripts-dev'	
+]);
+
 gulp.task('copy-html', function() {
 	gulp.src('public/index.html')
 		.pipe(gulp.dest('dist'));
@@ -26,6 +32,19 @@ gulp.task('copy-html', function() {
 gulp.task('scripts-dist', function() {
 	gulp.src([
 		'public/**/*.js'
+		])
+		.pipe(sourcemaps.init())
+		.pipe(concat('bundle.js'))
+		.pipe(ngAnnotate())
+		.pipe(uglify())
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest('dist/scripts'));
+});
+
+gulp.task('scripts-dev', function() {
+	gulp.src([
+		'public/**/*.js',
+		'node_modules/angular/angular.min.js'
 		])
 		.pipe(sourcemaps.init())
 		.pipe(concat('bundle.js'))
