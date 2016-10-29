@@ -16,6 +16,8 @@ function listOfFlavors() {
 		templateUrl: 'views/directives/listOfFlavors.directive.htm',
 		replace: true,
 		scope: {
+			flavors: '=',
+			pickAFlavor: '&'
 		},
 		link: linkFunc,
 		controller: listOfFlavorsController,

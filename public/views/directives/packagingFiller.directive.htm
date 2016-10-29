@@ -12,13 +12,17 @@
 		<button class='btn btn-warning' ng-click='vm.discardButtonClicked()'>discard</button>	
 
 		<!--Platter Filler-->
-		<platter-filler ng-if='vm.currentlyFilling.packaging == "platter"'></platter-filler>
+		<platter-filler ng-if='vm.currentlyFilling.packaging == "platter"'>
+		</platter-filler>
 
 		<!--Cone Filler-->
-		<cone-filler ng-if='vm.currentlyFilling.packaging != "platter"'></cone-filler>
+		<cone-filler ng-if='vm.currentlyFilling.packaging != "platter"'>
+		</cone-filler>
 		
 		<!--List of flavors-->
-		<list-of-flavors></list-of-flavors>
+		<list-of-flavors 	flavors='vm.currentlyFilling.flavors'
+							pick-a-flavor='vm.pickAFlavor'>
+		</list-of-flavors>
 
 		<!--Quantity-->
 		<qty-manager qty='vm.qty'>
