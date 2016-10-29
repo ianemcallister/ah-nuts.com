@@ -7,7 +7,7 @@
 
 	<!--Cart Summary-->
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row" style='color:yellow'>
-		<h6>Cart Summary</h6>
+		<cart-summary></cart-summary>
 	</div>
 
 	<!--Progress Display-->
@@ -39,8 +39,15 @@
 		</packaging-filler>
 
 		<!--Select Shipping or Pickup-->
+		<aquisition-manager style='color:yellow'
+							ng-if='vm.currentState.activeTab==2'>	
+		</aquisition-manager>
 
-		<!--Provide Payment-->	
+		<!--Provide Payment-->
+		<payment-manager	style='color:yellow'
+							ng-if='vm.currentState.activeTab==3'>
+			
+		</payment-manager>	
 
 	</div>
 	

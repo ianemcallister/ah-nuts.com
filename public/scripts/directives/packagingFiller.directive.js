@@ -161,6 +161,9 @@ function packagingFiller() {
 
 	    	//pass it to the cart
 	    	vm.addFilledPackage()(newPackage);
+
+	    	//then move to the next tab
+	    	vm.changeTab()(2);
 	    }
 
 	    vm.discardButtonClicked = function() {	//when the btn is clicked this happens
