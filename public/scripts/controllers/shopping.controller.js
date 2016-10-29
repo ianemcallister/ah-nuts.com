@@ -26,4 +26,5 @@ function shoppingController($log, shoppingCartsFactory, fillingsFactory, priceLi
 		$log.info('changing to tab', vm.currentState.activeTab);
 	}
 
+	
 }

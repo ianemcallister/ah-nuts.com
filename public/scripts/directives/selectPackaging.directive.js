@@ -16,7 +16,8 @@ function selectPackaging() {
 		templateUrl: 'views/directives/selectPackaging.directive.htm',
 		replace: true,
 		scope: {
-			currentlyFilling: '='
+			currentlyFilling: '=',
+			changeTab: '&'
 		},
 		link: linkFunc,
 		controller: selectPackagingController,
@@ -37,6 +38,9 @@ function selectPackaging() {
 
 	    	vm.currentlyFilling.packaging = size;
 	    	$log.info('got this size, ', size);
+
+	    	//change the active tab
+	    	vm.changeTab()(1);
 	    }
 
 	}

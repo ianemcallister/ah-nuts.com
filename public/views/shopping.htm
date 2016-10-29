@@ -25,6 +25,7 @@
 		
 		<!--Select A Size-->
 		<select-packaging 	ng-if='vm.currentState.activeTab==0'
+							change-tab='vm.updateSelectedTab'
 							currently-filling="vm.currentlyFilling">
 		</select-packaging>
 		

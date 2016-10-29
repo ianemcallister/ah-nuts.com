@@ -27,6 +27,14 @@ function shoppingProgressBar() {
 
 	/* @ngInject */
 	function linkFunc(scope, el, attr, ctrl) {
+		//needs to listen for changes in active tab, as other directives
+		//can prompt these changes
+		scope.$watch('vm.activeTab', function(next, current) {
+			console.log('the tab changed', current, next);
+			//update styles
+	    	scope.vm.changeTabClass(next, current);
+
+		});
     }
 
     shoppingProgressBarController.$inject = ['$scope', '$log', 'stateFactory'];
@@ -38,14 +46,16 @@ function shoppingProgressBar() {
 	    vm.tabs = stateFactory.defaultState('shoppingProgressBar');
 
 	    //view model functions
+	    vm.changeTabClass = function(next, current) {
+	    	//update styles
+	    	vm.tabs[current].classes.spbtabSelected = false;
+	    	vm.tabs[next].classes.spbtabSelected = true;	    	
+	    }
+
 	    vm.tabClick = function(tab) {
 
-	    	//report click
-	    	$log.info('clicked', tab);
-
-	    	//update styles
-	    	vm.tabs[vm.activeTab].classes.spbtabSelected = false;
-	    	vm.tabs[tab].classes.spbtabSelected = true;
+	    	//update the styles
+	    	vm.changeTabClass(tab, vm.activeTab);
 
 	    	//update parent model
 	    	vm.changeTab()(tab);
