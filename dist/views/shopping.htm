@@ -32,7 +32,8 @@
 		<!--Fill Packaging-->
 		<packaging-filler 	ng-if='vm.currentState.activeTab==1'
 							style='color:yellow'
-							pricing='vm.priceList' 
+							pricing='vm.priceList'
+							change-tab='vm.updateSelectedTab' 
 							currently-filling="vm.currentlyFilling"
 							add-filled-package="vm.cart.addFilledPackage">
 		</packaging-filler>

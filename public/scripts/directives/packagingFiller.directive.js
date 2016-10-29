@@ -17,6 +17,7 @@ function packagingFiller() {
 		replace: true,
 		scope: {
 			pricing: "=",
+			changeTab: '&',
 			currentlyFilling: "=",
 			addFilledPackage: "&"
 		},
@@ -160,6 +161,15 @@ function packagingFiller() {
 
 	    	//pass it to the cart
 	    	vm.addFilledPackage()(newPackage);
+	    }
+
+	    vm.discardButtonClicked = function() {	//when the btn is clicked this happens
+	    	
+	    	//currently filling package set to undefined
+	    	vm.currentlyFilling.packaging = undefined;
+
+	    	//active tab switched back to 0
+	    	vm.changeTab()(0);
 	    }
 
 	}

@@ -9,7 +9,7 @@
 		Type: {{vm.currentlyFilling.packaging}}
 		
 		<!--Provide discart button-->
-		<button class='btn btn-warning' ng-click='vm.currentlyFilling.packaging=undefined'>discard</button>	
+		<button class='btn btn-warning' ng-click='vm.discardButtonClicked()'>discard</button>	
 
 		<!--Platter Filler-->
 		<platter-filler ng-if='vm.currentlyFilling.packaging == "platter"'></platter-filler>
