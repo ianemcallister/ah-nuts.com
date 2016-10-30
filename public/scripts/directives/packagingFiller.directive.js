@@ -18,6 +18,7 @@ function packagingFiller() {
 		scope: {
 			pricing: "=",
 			changeTab: '&',
+			productFlavorList: "=",
 			currentlyFilling: "=",
 			addFilledPackage: "&"
 		},

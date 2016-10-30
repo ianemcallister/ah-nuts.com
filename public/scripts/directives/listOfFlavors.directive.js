@@ -34,6 +34,32 @@ function listOfFlavors() {
     function listOfFlavorsController($scope, $log) {
 	    var vm = this;
 
+	    //local methods
+	    function selectABtn(index) {
+	    	vm.flavors[index].classes.availProductFlavor = false;
+	    	vm.flavors[index].classes.selectedProductFlavor = true;
+	    	vm.flavors[index].classes.unAvailProductFlavor = false;
+	    }
+
+	    function unselectABtn(index) {
+	    	vm.flavors[index].classes.availProductFlavor = true;
+	    	vm.flavors[index].classes.selectedProductFlavor = false;
+	    	vm.flavors[index].classes.unAvailProductFlavor = false;	    	
+	    }
+	    function makeBtnAvail(index) {}
+	    function makeBtnUnAvail(index) {}
+
+	    //view model methods
+	    vm.clickAFlavor = function(index) {
+	    	//when a flavor is clicked must
+	    	//check if it is allowed to be clicked
+	    	//flip the selected state
+	    	vm.flavors[index].selected = !vm.flavors[index].selected;
+
+	    	//set the class
+	    	if(vm.flavors[index].selected) selectABtn(index);
+	    	else unselectABtn(index);
+	    }
 	}
 
 	return  directive;

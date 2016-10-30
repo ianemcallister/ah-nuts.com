@@ -3,6 +3,21 @@
 	color: black;
 }
 
+.availProductFlavor {
+	background-color: green;
+	color: black;
+}
+
+.unAvailProductFlavor {
+	background-color: grey;
+	color: white;
+}
+
+.selectedProductFlavor {
+	background-color: yellow;
+	color: black;
+}
+
 #shoppingHeader {
 	margin-top: 0px;
 }
