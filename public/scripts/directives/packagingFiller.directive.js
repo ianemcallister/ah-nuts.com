@@ -61,6 +61,8 @@ function packagingFiller() {
 	    	//initialize local variable
 	    	var returnObject = {};
 
+	    	$log.info(flavorProportions);
+
 	    	//cycle through all the flavors, if proportion is great than 
 	    	Object.keys(flavorProportions).forEach(function(flavor) {
 
@@ -149,7 +151,7 @@ function packagingFiller() {
 	    	
 	    	//distill the mixture
 	    	var thisPackaging = vm.currentlyFilling.packaging;
-	    	var thisMixture = supplyMixtureObject(vm.currentlyFilling.flavors.proportions);
+	    	var thisMixture = supplyMixtureObject(vm.productFlavorList);
 	    	var thisQuantity = vm.qty;
 
 	    	//format the object to be added to the cart
