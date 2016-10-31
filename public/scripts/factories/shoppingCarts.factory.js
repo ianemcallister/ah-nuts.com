@@ -9,7 +9,14 @@ function shoppingCartsFactory($log) {
 
 	//TEMPORARY OBJECT
 	var allCartElements = {
-		selectedPackaging: {
+		items: [
+			{
+				description:"Small: SR Pecans & SR Cashews",
+				qty: 5,
+				cost: 700
+			}
+		],
+		/*selectedPackaging: {
 			smalls: 0,
 			mediums: 0,
 			larges: 0,
@@ -36,16 +43,21 @@ function shoppingCartsFactory($log) {
 				mixes: [],
 				subtotal: 0
 			}
-		},
+		},*/
 		cost: {
-			subtotal: 0,
+			subtotal: 3500,
 			taxes: 0,
-			discounts: 0
+			discounts: 0,
+			shipping: {
+
+			}
 		},
 		addASize: addASize,
 		removeASize: removeASize,
 		addFilledPackage: addFilledPackage,
-		removeAPackage: removeAPackage
+		removeAPackage: removeAPackage,
+		calculateItemSubtotal: calculateItemSubtotal,
+		calculateTotalCost: calculateTotalCost
 	};
 
 	function addASize(startingValue) {
@@ -72,6 +84,27 @@ function shoppingCartsFactory($log) {
 	}
 	function removeAPackage(size, id) {}
 
+	function calculateItemSubtotal(item) {
+		
+		//declare local variable
+		var subtotal = ((item.cost * item.qty) / 100).toFixed(2);
+
+		return subtotal;
+	}
+
+	function calculateTotalCost(allItems) {
+
+		//decalre local variable
+		var total = 0;
+
+		allItems.forEach(function(item) {
+			total += ((item.cost * item.qty) / 100);
+		});	
+
+		$log.info('got this total', total);
+
+		return total.toFixed(2);
+	}
 	
 	return allCartElements;
 

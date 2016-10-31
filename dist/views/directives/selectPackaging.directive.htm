@@ -3,26 +3,19 @@
 	<div class='headerChalk' style="color:green">Choose A Size:</div>
 	
 	<!--Container-->
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row" style='color:yellow'>
-		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.sizeBtnClicked("small")'>
-			<img src='../source/small.svg' alt='small' id='smallCone'>
-			<br>Small
-			<br>4 oz
-		</div>
-		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.sizeBtnClicked("medium")'>
-			<img src='../source/small.svg' alt='small' id='smallCone'>
-			<br>Medium
-			<br>8 oz
-		</div>
-		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.sizeBtnClicked("large")'>
-			<img src='../source/small.svg' alt='small' id='smallCone'>
-			<br>Large
-			<br>16 oz
-		</div>
-		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align:center' ng-click='vm.sizeBtnClicked("platter")'>
-			<div id='platterPackageSmall'></div>
-			<br>Platter
-			<br>20 oz
+	<div class="row">
+		<div style='color:yellow; text-align: center'>
+		
+			<div 	class="col-xs-6 col-sm-6 col-md-6 col-lg-12"	
+					ng-repeat="package in vm.packagingList track by $index"
+					ng-click='vm.sizeBtnClicked($index + 1)'>
+				<img src='../source/small.svg' alt='small' id='smallCone'>
+				<br>
+				{{package.title}}
+				<br>
+				{{package.volume}} oz
+			</div>
+
 		</div>
 	</div>
 </div>

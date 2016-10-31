@@ -1,27 +1,31 @@
 <div>
 	
 	<!--Header-->
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row" style='color:yellow'>
-		<h2 style='text-align: center' id='shoppingHeader'>Shopping</h2>
-	</div>
-
-	<!--Cart Summary-->
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row" style='color:yellow'>
-		<cart-summary></cart-summary>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style='color:yellow'>
+			<h2 style='text-align: center' id='shoppingHeader'>Shopping</h2>
+		</div>
 	</div>
 
 	<!--Progress Display-->
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row" style='color:yellow'>
-		
-		<shopping-progress-bar	active-tab='vm.currentState.activeTab'
-								change-tab='vm.updateSelectedTab'>
-								
-		</shopping-progress-bar>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style='color:yellow; margin-left: 0px'>
+			
+			<shopping-progress-bar	active-tab='vm.currentState.activeTab'
+									change-tab='vm.updateSelectedTab'>
+									
+			</shopping-progress-bar>
 
+		</div>		
+	</div>
+
+	<!--Cart Summary-->
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id='cartSummary' style='color:yellow'>
+		<cart-summary	cart='vm.cart'></cart-summary>
 	</div>	
 
 	<!--interaction Window-->
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
 		
 		<!--Select A Size-->
 		<select-packaging 	ng-if='vm.currentState.activeTab==0'
@@ -52,10 +56,15 @@
 
 	</div>
 	
-	<!--Add Another Package-->
-	<button class="col-xs-12 col-sm-12 col-md-12 col-lg-12 btn btn-primary">Add Another</button>
+	<!--Add Another Package
+	<div class="row">
+		
+		<button class="col-xs-12 col-sm-12 col-md-12 col-lg-12 btn btn-primary">Add Another</button>
+		
+	</div>
+	
 
-	<!--Proceed To Checkout-->
-	<button class="col-xs-12 col-sm-12 col-md-12 col-lg-12 btn btn-warning">Check-Out</button>
+	Proceed To Checkout
+	<button class="col-xs-12 col-sm-12 col-md-12 col-lg-12 btn btn-warning">Check-Out</button>-->
 
 </div>

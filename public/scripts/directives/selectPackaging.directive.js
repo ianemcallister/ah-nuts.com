@@ -34,6 +34,25 @@ function selectPackaging() {
     function selectPackagingController($scope, $log) {
 	    var vm = this;
 
+	    vm.packagingList = {
+	    	0: {
+	    		"title": "Small",
+	    		"volume": 4
+	    	},
+	    	1: {
+	    		"title": "Average",
+	    		"volume": 8
+	    	},
+	    	2: {
+	    		"title": "Impressive",
+	    		"volume": 16
+	    	},
+	    	3: {
+	    		"title": "Platter",
+	    		"volume": 20
+	    	},	    		    		    	
+	    };
+
 	    vm.sizeBtnClicked = function(size) {
 
 	    	vm.currentlyFilling.packaging = size;

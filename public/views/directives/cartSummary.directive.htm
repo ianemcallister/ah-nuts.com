@@ -1,3 +1,53 @@
 <div>
-	<h6>Cart Summary</h6>
+	
+	<!--Header Bar-->
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style='color:yellow'>
+		
+		<!--Title-->
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style='padding-left: 0px'>
+			<h4 style='margin-top: 0px'>Total: ${{vm.cart.calculateTotalCost(vm.cart.items)}}</h4>
+		</div>
+		
+		<!--Header-->
+		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style='text-align: center'>
+			<strong><span class='glyphicon glyphicon-barcode '></span></strong>
+		</div>
+
+		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style='text-align: center'>
+			<strong><span class='glyphicon glyphicon-globe '></span></strong>
+		</div>
+
+		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style='text-align: center'>
+			<strong><span class='glyphicon glyphicon-usd '></span></strong>
+		</div>
+
+	</div>
+	
+	<!--Itemized List-->
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style='color:yellow'>
+		
+		<!--Table Header Row-->
+		<div class="row">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><u>Item</u></div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align: center'><u>Qty</u></div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align: center'><u>Cost</u></div>
+		</div>
+	
+		<!--Empty Cart Notification-->
+		<div class="row" ng-if='vm.cart.items.length == 0'>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				No Items Selected
+			</div>
+		</div>
+
+		<!--List-->
+		<div 	class="row" 
+				ng-if='vm.cart.items.length > 0'
+				ng-repeat="cartItem in vm.cart.items track by $index">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">{{cartItem.description}}</div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align: center'>{{cartItem.qty}}</div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align: center'>${{vm.cart.calculateItemSubtotal(cartItem)}}</div>
+		</div>
+	</div>
+
 </div>

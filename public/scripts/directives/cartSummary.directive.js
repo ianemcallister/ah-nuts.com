@@ -16,6 +16,7 @@ function cartSummary() {
 		templateUrl: 'views/directives/cartSummary.directive.htm',
 		replace: true,
 		scope: {
+			cart: '='
 		},
 		link: linkFunc,
 		controller: cartSummaryController,
@@ -31,7 +32,7 @@ function cartSummary() {
     /* @ngInject */
     function cartSummaryController($scope, $log) {
 	    var vm = this;
-
+	    
 	}
 
 	return  directive;

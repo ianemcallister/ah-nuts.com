@@ -5,25 +5,37 @@
 	<!--Only show if a packaging has been selected-->
 	<div ng-if='vm.currentlyFilling.packaging'>
 		
-		<!--Designate the type-->
-		Type: {{vm.currentlyFilling.packaging}}
+		<div class="row">
+			<!--Designate the type-->
+			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+				Type: {{vm.currentlyFilling.packaging}}
+			</div>
+			
+			<!--Provide discart button-->
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<button class='btn btn-warning' ng-click='vm.discardButtonClicked()'>discard</button>
+			</div>			
+		</div>
+
+		<div class="row">
+			<!--Visualization-->
+			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+				<!--Platter Filler-->
+				<platter-filler ng-if='vm.currentlyFilling.packaging == "platter"'>
+				</platter-filler>
+
+				<!--Cone Filler-->
+				<cone-filler ng-if='vm.currentlyFilling.packaging != "platter"'>
+				</cone-filler>				
+			</div>
+			<!--Flavors List-->
+			<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+				<list-of-flavors 	flavors='vm.productFlavorList'
+									pick-a-flavor='vm.pickAFlavor'>
+				</list-of-flavors>				
+			</div>
+		</div>
 		
-		<!--Provide discart button-->
-		<button class='btn btn-warning' ng-click='vm.discardButtonClicked()'>discard</button>	
-
-		<!--Platter Filler-->
-		<platter-filler ng-if='vm.currentlyFilling.packaging == "platter"'>
-		</platter-filler>
-
-		<!--Cone Filler-->
-		<cone-filler ng-if='vm.currentlyFilling.packaging != "platter"'>
-		</cone-filler>
-		
-		<!--List of flavors-->
-		<list-of-flavors 	flavors='vm.productFlavorList'
-							pick-a-flavor='vm.pickAFlavor'>
-		</list-of-flavors>
-
 		<!--Quantity-->
 		<qty-manager qty='vm.qty'>
 		</qty-manager>
