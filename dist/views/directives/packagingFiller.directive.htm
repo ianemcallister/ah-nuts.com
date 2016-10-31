@@ -3,12 +3,12 @@
 	<div class='headerChalk' style="color:green">Fill It Up:</div>
 	
 	<!--Only show if a packaging has been selected-->
-	<div ng-if='vm.currentlyFilling.packaging'>
+	<div ng-if='vm.state.packaging.selected'>
 		
 		<div class="row">
 			<!--Designate the type-->
 			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-				Type: {{vm.currentlyFilling.packaging}}
+				Type: {{vm.pricing.packaging[vm.state.packaging.size].title}}
 			</div>
 			
 			<!--Provide discart button-->
@@ -18,22 +18,27 @@
 		</div>
 
 		<div class="row">
+
 			<!--Visualization-->
 			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+				
 				<!--Platter Filler-->
-				<platter-filler ng-if='vm.currentlyFilling.packaging == "platter"'>
+				<platter-filler ng-if='vm.state.packaging.size == 3'>
 				</platter-filler>
 
 				<!--Cone Filler-->
-				<cone-filler ng-if='vm.currentlyFilling.packaging != "platter"'>
+				<cone-filler ng-if='vm.state.packaging.size < 3'>
 				</cone-filler>				
+			
 			</div>
+			
 			<!--Flavors List-->
 			<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-				<list-of-flavors 	flavors='vm.productFlavorList'
+				<list-of-flavors 	flavors='vm.state.buttons.flavorList'
 									pick-a-flavor='vm.pickAFlavor'>
 				</list-of-flavors>				
 			</div>
+
 		</div>
 		
 		<!--Quantity-->
@@ -41,7 +46,8 @@
 		</qty-manager>
 		
 		<!--Add to Cart Button-->
-		<button class='btn btn-success' ng-click='vm.addToCart()'>Add To Cart</button>
+		<button class='btn btn-success' ng-click='vm.addToCart(true)'>Add To Cart & Checkout</button>
+		<button class='btn btn-success' ng-click='vm.addToCart(false)'>Add To Cart & Keep Shopping</button>
 
 	</div>
 

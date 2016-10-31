@@ -19,8 +19,7 @@ function packagingFiller() {
 			cart: "=",
 			pricing: "=",
 			changeTab: '&',
-			productFlavorList: "=",
-			currentlyFilling: "=",
+			state: "=",
 			addFilledPackage: "&"
 		},
 		link: linkFunc,
@@ -41,125 +40,103 @@ function packagingFiller() {
 	    //view model variables
 	    vm.qty = 1;
 
+	    function updatePackagingState() {
+	    	//update the overall packaging
+	    	vm.state.packaging.selected = false;
+	    	vm.state.packaging.size = undefined;
+	    	vm.state.packaging.flavors = 0;
+	    	vm.state.packaging.mix = {};
+	    	//update the flavor buttons
+	    	Object.keys(vm.state.buttons.flavorList).forEach(function(flavor) {
+	    		vm.state.buttons.flavorList[flavor].selected = false
+	    		vm.state.buttons.flavorList[flavor].classes.availProductFlavor = true;
+	    		vm.state.buttons.flavorList[flavor].classes.unAvailProductFlavor = false;
+	    		vm.state.buttons.flavorList[flavor].classes.selectedProductFlavor = false;
+	    	})
+	    }
+
+	    /*
+	    *	Calculates an equal split between flavors
+	    */
 	    function equalSplit(divisions) {
 	    	return 1 / divisions;
 	    }
 
-	    function assignEqualSplit(equalPortion) {
-
-	    	Object.keys(vm.currentlyFilling.flavors.selected).forEach(function(flavor) {
-	    		
-	    		if(vm.currentlyFilling.flavors.selected[flavor])
-	    			vm.currentlyFilling.flavors.proportions[flavor] = equalPortion;
-	    		else
-	    			vm.currentlyFilling.flavors.proportions[flavor] = 0.00
-
-	    	})
-
+	    /*
+	    *	If a flavor is being added, increase the number of flavors, vice-versa.
+	    */
+	    function updateFlavorCount(adding) {
+	    	//update the total number of flavors
+	    	if(adding) vm.state.packaging.flavors++;
+	    	else vm.state.packaging.flavors--;	    	
 	    }
 
-	    function supplyMixtureObject(flavorProportions) {		//receive all the proprtions
-	    	//initialize local variable
-	    	var returnObject = {};
-
-	    	$log.info(flavorProportions);
-
-	    	//cycle through all the flavors, if proportion is great than 
-	    	Object.keys(flavorProportions).forEach(function(flavor) {
-
-	    		if(flavorProportions[flavor] > 0)
-	    			returnObject[flavor] = flavorProportions[flavor]
-
-	    	});
-
-	    	return returnObject		//return a distilled list of proportions
-	    }
-
-	    function checkForPeanuts(packaging, mixture) {
-
-	    	var hasPeanuts = undefined;
-
-	    	//is this a mixture or a platter?
-	    	if(packaging=='platter') {
-	    		//a platter with at least one section of peanuts has peanuts
-	    		if(mixture.SRPeanut > 0) hasPeanuts = true;
-	    		else hasPeanuts = false;
-
-	    	} else {
-	    		//a mixture must have at least 50% peanuts to be considered peanut
-	    		if(mixture.SRPeanut >= 0.5) hasPeanuts = true;
-	    		else hasPeanuts = false;
-	    	}
-
-	    	return hasPeanuts;
-	    }
-
-	    function calculatePurchasePrice(packaging, mixture) {
+	    /*
+	    *	Update the mix of flavors based on the addition or subtraction of a flavor
+	    */
+	    function updateFlavorMix(flavor, adding) {
 	    	
-	    	//define the local variable
-	    	var salePrice = 0;
-	    	var peanutStatus = 'withoutPeanuts';
-	    	var peanutSections = 0;
+	    	//$log.info('got this flavor', flavor);
+	    	
+	    	var flavorTxt = flavor.toString();
 
-	    	//determine peanuts presence and qty
-	    	var peanutsArePresent = checkForPeanuts(packaging, mixture);
+	    	//is this addtion or subtraction?
+	    	if(adding) {
+	    		//if adding..
+	    		//update the split on all the current flavors
+	    		Object.keys(vm.state.packaging.mix).forEach(function(flavor) {
+	    			vm.state.packaging.mix[flavor] = equalSplit(vm.state.packaging.flavors);
+	    		});
 
-	    	if(peanutsArePresent) {
-	    		//set the object value
-	    		peanutStatus = 'withPeanuts';
-	    		//calculate the number of peanut sections
-	    		peanutSections = mixture.SRPeanut * 4;
-	    	}
-
-	    	//packaging differs for platters and bags
-	    	if(packaging=='platter') {
-	    		salePrice = vm.pricing[peanutStatus][packaging][peanutSections];
+	    		//then add the split to the new flavor
+	    		vm.state.packaging.mix[flavorTxt] = equalSplit(vm.state.packaging.flavors);
+	    		
 	    	} else {
-	    		salePrice = vm.pricing[peanutStatus][packaging];
+	    		//if subtracting..
+	    		//update all the splits on the other flavors
+	    		Object.keys(vm.state.packaging.mix).forEach(function(flavor) {
+	    			vm.state.packaging.mix[flavor] = equalSplit(vm.state.packaging.flavors);
+	    		});
+
+	    		//then delete the desired flavor
+	    		delete vm.state.packaging.mix[flavorTxt];
+
 	    	}
-
-	    	return salePrice;
 	    }
 
-	    function calculateItemSubtotal(packaging, mixture, qty) {
+	    /****************************************************************
+	    *					VIEWMODEL METHODS							*
+	    ****************************************************************/
+	    /*
+	    *	Add or remove that flavor from the mix, this involves
+	    *		- Updating the total number of flavors
+	    *		- Adding or removeing a value from/to the mix object
+	    *			* If Adding then the split must be calculated
+	    */
+	    vm.pickAFlavor = function(flavor, adding) {
+	    	
+	    	//$log.info('got this flavor', flavor);
 
-	    	var purchasePrice = calculatePurchasePrice(packaging, mixture);
+	    	//update the total number of flavors
+	    	updateFlavorCount(adding);
 
-	    	return purchasePrice * qty;
+	    	//update the mix
+	    	updateFlavorMix(flavor, adding);
 	    }
 
-	    //viewmodel methods
-	    vm.pickAFlavor = function(flavor) {
-
-	    	//first flip the checkbox
-	    	vm.currentlyFilling.flavors.selected[flavor] = !vm.currentlyFilling.flavors.selected[flavor];
-
-	    	//increase or decrease the number of flavors based on the sign
-	    	if(vm.currentlyFilling.flavors.selected[flavor])
-	    		vm.currentlyFilling.flavors.noOfFlavors++;
-	    	else
-	    		vm.currentlyFilling.flavors.noOfFlavors--;
-
-	    	//then for equal split calculate the percentage, based on the number of flavors
-	    	var equalPortions = equalSplit(vm.currentlyFilling.flavors.noOfFlavors);
-	    	assignEqualSplit(equalPortions);
-
-	    	//notify the user
-	    	$log.info('# of Flavors', vm.currentlyFilling.flavors.noOfFlavors, "split", equalPortions, 'propritions', vm.currentlyFilling.flavors.proportions);
-	    }
-
-	    vm.addToCart = function() {		//add the current item to the cart
+	    /*
+	    *	When "Add To Cart" button is clicked, a new item is built, and added to the
+	    *	cart object.
+	    */
+	    vm.addToCart = function(checkOut) {		//add the current item to the cart
 	    	
 	    	//define the local variables
-	    	var thisDescription = "Small: SR Pecans & SR Cashews";
-	    	var thisPackaging = 0;
-	    	var thisMixture = {
-					"SRPecans":0.5,
-					"SRCashews":0.5
-				};
+	    	var thisPackaging = vm.state.packaging.size;
+	    	var thisMixture = vm.state.packaging.mix;
 	    	var thisQuantity = vm.qty;
-	    	var thisCost = 700;
-
+	    	var thisCost = vm.pricing.calculatePurchasePrice(vm.state.packaging, vm.pricing);
+	    	var thisDescription = "Small: SR Pecans & SR Cashews";
+	    	
 	    	//build the item
 	    	var itemForPurchase = {
 	    		description: thisDescription,
@@ -172,14 +149,21 @@ function packagingFiller() {
 	    	//pass it to the cart
 	    	vm.cart.items.push(vm.addFilledPackage()(itemForPurchase));
 
+	    	//update the state
+	    	updatePackagingState();
+
 	    	//then move to the next tab
-	    	vm.changeTab()(2);
+	    	if(checkOut) vm.changeTab()(2);
+	    	else vm.changeTab()(0);
 	    }
 
-	    vm.discardButtonClicked = function() {	//when the btn is clicked this happens
+	    /*
+	    *	When this button is clicked the currently selected packaging is discarded
+	    */
+	    vm.discardButtonClicked = function() {	
 	    	
 	    	//currently filling package set to undefined
-	    	vm.currentlyFilling.packaging = undefined;
+	    	updatePackagingState();
 
 	    	//active tab switched back to 0
 	    	vm.changeTab()(0);

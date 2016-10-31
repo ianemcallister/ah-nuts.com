@@ -29,8 +29,9 @@
 		
 		<!--Select A Size-->
 		<select-packaging 	ng-if='vm.currentState.activeTab==0'
+							pricing='vm.priceList'
 							change-tab='vm.updateSelectedTab'
-							currently-filling="vm.currentlyFilling">
+							state='vm.currentState'>
 		</select-packaging>
 		
 		<!--Fill Packaging-->
@@ -38,9 +39,8 @@
 							style='color:yellow'
 							cart='vm.cart'
 							pricing='vm.priceList'
-							change-tab='vm.updateSelectedTab' 
-							product-flavor-list='vm.currentState.flavorsBtnList'
-							currently-filling="vm.currentlyFilling"
+							change-tab='vm.updateSelectedTab'
+							state='vm.currentState' 
 							add-filled-package="vm.cart.addFilledPackage">
 		</packaging-filler>
 

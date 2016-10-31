@@ -26,7 +26,87 @@ function stateFactory($log) {
 					2: 'access',
 					3: 'checkout'
 				},
-				sizeSelected: false
+				packaging: {
+					"selected": false,
+					"size": undefined,
+					"flavors": 0,
+					"mix": {},
+					"cost": 0
+				},
+				buttons: {
+					flavorList: {
+						0: {
+							"title": "Secret Recipe Pecans",
+							selected: false,
+							proportion: 0.00,
+							classes: {
+								availProductFlavor: true,
+								unAvailProductFlavor: false,
+								selectedProductFlavor: false
+							}
+						},
+			    		1: {
+			    			"title": "Drunken Pecans",
+							selected: false,
+							proportion: 0.00,
+							classes: {
+								availProductFlavor: true,
+								unAvailProductFlavor: false,
+								selectedProductFlavor: false
+							}
+						},
+			    		2: {
+			    			"title": "Cinnamon Pecans",
+							selected: false,
+							proportion: 0.00,
+							classes: {
+								availProductFlavor: true,
+								unAvailProductFlavor: false,
+								selectedProductFlavor: false
+							}
+						},
+			    		3: {
+			    			"title": "Secret Recipe Almonds",
+							selected: false,
+							proportion: 0.00,
+							classes: {
+								availProductFlavor: true,
+								unAvailProductFlavor: false,
+								selectedProductFlavor: false
+							}
+						},
+			    		4: {
+			    			"title":"Cinnamon Pecans",
+							selected: false,
+							proportion: 0.00,
+							classes: {
+								availProductFlavor: true,
+								unAvailProductFlavor: false,
+								selectedProductFlavor: false
+							}
+						},    			
+			    		5: {
+			    			"title":"Secret Recipe Cashews",
+							selected: false,
+							proportion: 0.00,
+							classes: {
+								availProductFlavor: true,
+								unAvailProductFlavor: false,
+								selectedProductFlavor: false
+							}
+						},    			
+			    		6: {
+			    			"title":"Secret Recipe Peanuts",
+							selected: false,
+							proportion: 0.00,
+							classes: {
+								availProductFlavor: true,
+								unAvailProductFlavor: false,
+								selectedProductFlavor: false
+							}
+						}    	
+					}
+				}
 			}
 		} else if(section=='shoppingProgressBar') {
 			returnObject = {

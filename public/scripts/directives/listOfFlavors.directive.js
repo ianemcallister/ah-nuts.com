@@ -51,14 +51,29 @@ function listOfFlavors() {
 
 	    //view model methods
 	    vm.clickAFlavor = function(index) {
+	    	
+	    	//define local variable
+	    	var adding = false;
+
 	    	//when a flavor is clicked must
 	    	//check if it is allowed to be clicked
 	    	//flip the selected state
 	    	vm.flavors[index].selected = !vm.flavors[index].selected;
 
 	    	//set the class
-	    	if(vm.flavors[index].selected) selectABtn(index);
-	    	else unselectABtn(index);
+	    	if(vm.flavors[index].selected) {
+	    		//update the btn state
+	    		selectABtn(index);
+	    		//addition or subtraction 
+	    		adding = true;
+	    	}
+	    	else {
+	    		//update the btn state
+	    		unselectABtn(index);
+	    	}
+
+	    	//pass the flavor up to the parent
+	    	vm.pickAFlavor()(index, adding);
 	    }
 	}
 

@@ -44,7 +44,7 @@
 		<div 	class="row" 
 				ng-if='vm.cart.items.length > 0'
 				ng-repeat="cartItem in vm.cart.items track by $index">
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">{{cartItem.description}}</div>
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" >{{cartItem.description}}</div>
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align: center'>{{cartItem.qty}}</div>
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='text-align: center'>${{vm.cart.calculateItemSubtotal(cartItem)}}</div>
 		</div>

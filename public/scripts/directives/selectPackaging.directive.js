@@ -16,7 +16,8 @@ function selectPackaging() {
 		templateUrl: 'views/directives/selectPackaging.directive.htm',
 		replace: true,
 		scope: {
-			currentlyFilling: '=',
+			state: '=',
+			pricing: '=',
 			changeTab: '&'
 		},
 		link: linkFunc,
@@ -34,29 +35,13 @@ function selectPackaging() {
     function selectPackagingController($scope, $log) {
 	    var vm = this;
 
-	    vm.packagingList = {
-	    	0: {
-	    		"title": "Small",
-	    		"volume": 4
-	    	},
-	    	1: {
-	    		"title": "Average",
-	    		"volume": 8
-	    	},
-	    	2: {
-	    		"title": "Impressive",
-	    		"volume": 16
-	    	},
-	    	3: {
-	    		"title": "Platter",
-	    		"volume": 20
-	    	},	    		    		    	
-	    };
-
 	    vm.sizeBtnClicked = function(size) {
 
-	    	vm.currentlyFilling.packaging = size;
-	    	$log.info('got this size, ', size);
+	    	//vm.currentlyFilling.packaging = size;
+	    	vm.state.packaging.selected = true;
+	    	vm.state.packaging.size = size;
+
+	    	$log.info('got this size, ', vm.pricing.packaging[size].title);
 
 	    	//change the active tab
 	    	vm.changeTab()(1);
