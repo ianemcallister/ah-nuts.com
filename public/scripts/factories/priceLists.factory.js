@@ -54,13 +54,14 @@ function priceListFactory($log) {
 				0: 2200
 			}			
 		},
-		calculatePurchasePrice: calculatePurchasePrice
+		calculatePurchasePrice: calculatePurchasePrice,
+		buildDescription: buildDescription
 	};
 
 	function calculatePurchasePrice(thisPackaging, thisPricing) {
 		
-		$log.info('Packaging:', thisPackaging);
-		$log.info('Pricing:', thisPricing);
+		//$log.info('Packaging:', thisPackaging);
+		//$log.info('Pricing:', thisPricing);
 		
 		//local variables
 		var cost = 0;
@@ -68,7 +69,7 @@ function priceListFactory($log) {
 		//first check for peanuts
 		if(typeof thisPackaging.mix['6'] == 'undefined') {
 			//peanuts are NOT present
-			$log.info('no peanuts');
+			//$log.info('no peanuts');
 			//then check for size
 			if(thisPackaging.size > 2) {
 				//this is a platter
@@ -80,21 +81,21 @@ function priceListFactory($log) {
 			
 		} else {
 			//peanuts are present
-			$log.info('there are peanuts')
+			//$log.info('there are peanuts')
 			//then check for size
 			if(thisPackaging.size > 2) {
 				//this is a platter
 				//count sections of peanuts
 				var peanutSections = 4 * thisPackaging.mix['6'];
 
-				$log.info(peanutSections, 'peanutSections');
+				//$log.info(peanutSections, 'peanutSections');
 				
 				cost = thisPricing.withPeanuts[thisPackaging.size.toString()][peanutSections.toString()];
 
 			} else {
 				//this is a cone
 				//is it more or less than 50% peanuts?
-				$log.info("% peanuts", thisPackaging.mix['6']);
+				//$log.info("% peanuts", thisPackaging.mix['6']);
 				if(thisPackaging.mix['6'] >= 0.5) {
 					//$log.info('peanuts price', thisPricing.withPeanuts[thisPackaging.size.toString()]);
 					cost = thisPricing.withPeanuts[thisPackaging.size.toString()];
@@ -108,6 +109,28 @@ function priceListFactory($log) {
 		return cost;
 	}
 	
+	function buildDescription(thisPackaging, thisPricing) {
+		$log.info('building a description');
+		$log.info('thisPackaging', thisPackaging);
+		$log.info('thisPricing', thisPricing);
+
+		//define local variables
+		var description = '';
+
+		//determine the size (small, average, impressive, platter)
+		description += thisPricing.packaging[thisPackaging.size.toString()].title;
+		description += ": ";
+
+		//determine the type (Pecans, Almonds, Cashews, Peanuts, Mix, Peanut Mix)
+		description += "Pecans";
+		description += " (";
+
+		//determine flavors (...)
+		description += "SR";
+		description += ")";
+
+		return description;
+	}
 	return allPrices;
 
 }

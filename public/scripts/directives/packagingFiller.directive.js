@@ -135,7 +135,7 @@ function packagingFiller() {
 	    	var thisMixture = vm.state.packaging.mix;
 	    	var thisQuantity = vm.qty;
 	    	var thisCost = vm.pricing.calculatePurchasePrice(vm.state.packaging, vm.pricing);
-	    	var thisDescription = "Small: SR Pecans & SR Cashews";
+	    	var thisDescription = vm.pricing.buildDescription(vm.state.packaging, vm.pricing);
 	    	
 	    	//build the item
 	    	var itemForPurchase = {

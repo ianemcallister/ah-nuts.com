@@ -15,10 +15,28 @@ function fillingsFactory($log) {
     		1: "Drunken Pecans",
     		2: "Cinnamon Pecans",
     		3: "Secret Recipe Almonds",
-    		4: "Cinnamon Pecans",
+    		4: "Cinnamon Almonds",
     		5: "Secret Recipe Cashews",
     		6: "Secret Recipe Peanuts"
-    	}
+    	},
+        types: {
+            0: "Pecans",
+            1: "Pecans",
+            2: "Pecans",
+            3: "Almonds",
+            4: "Almonds",
+            5: "Cashews",
+            6: "Peanuts"
+        },
+        recipies: {
+            0: "Secret Recipe",
+            1: "Drunken",
+            2: "Cinnamon",
+            3: "Secret Recipe",
+            4: "Cinnamon",
+            5: "Secret Recipe",
+            6: "Secret Recipe"           
+        }
     	/*flavors: {
     		noOfFlavors: 0,
     		selected: {
