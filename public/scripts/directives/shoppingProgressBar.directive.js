@@ -30,7 +30,7 @@ function shoppingProgressBar() {
 		//needs to listen for changes in active tab, as other directives
 		//can prompt these changes
 		scope.$watch('vm.activeTab', function(next, current) {
-			console.log('the tab changed', current, next);
+			//console.log('the tab changed', current, next);
 			//update styles
 	    	scope.vm.changeTabClass(next, current);
 

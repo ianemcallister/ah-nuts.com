@@ -16,6 +16,7 @@ function packagingFiller() {
 		templateUrl: 'views/directives/packagingFiller.directive.htm',
 		replace: true,
 		scope: {
+			cart: "=",
 			pricing: "=",
 			changeTab: '&',
 			productFlavorList: "=",
@@ -149,21 +150,27 @@ function packagingFiller() {
 
 	    vm.addToCart = function() {		//add the current item to the cart
 	    	
-	    	//distill the mixture
-	    	var thisPackaging = vm.currentlyFilling.packaging;
-	    	var thisMixture = supplyMixtureObject(vm.productFlavorList);
+	    	//define the local variables
+	    	var thisDescription = "Small: SR Pecans & SR Cashews";
+	    	var thisPackaging = 0;
+	    	var thisMixture = {
+					"SRPecans":0.5,
+					"SRCashews":0.5
+				};
 	    	var thisQuantity = vm.qty;
+	    	var thisCost = 700;
 
-	    	//format the object to be added to the cart
-	    	var newPackage = {
-	    		selectedPackaging: thisPackaging,
-	    		mixture: thisMixture,
-	    		qty: thisQuantity,
-	    		subtotatl: calculateItemSubtotal(thisPackaging, thisMixture, thisQuantity)
-	    	};
+	    	//build the item
+	    	var itemForPurchase = {
+	    		description: thisDescription,
+				packaging: thisPackaging,
+				flavors: thisMixture,
+				qty: thisQuantity,
+				cost: thisCost
+	    	}
 
 	    	//pass it to the cart
-	    	vm.addFilledPackage()(newPackage);
+	    	vm.cart.items.push(vm.addFilledPackage()(itemForPurchase));
 
 	    	//then move to the next tab
 	    	vm.changeTab()(2);

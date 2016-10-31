@@ -9,12 +9,17 @@ function shoppingCartsFactory($log) {
 
 	//TEMPORARY OBJECT
 	var allCartElements = {
-		items: [
-			{
+		items: [	//EXAMPLE OBJECT
+			/*{ 
 				description:"Small: SR Pecans & SR Cashews",
+				packaging: 0,
+				flavors: {
+					"SRPecans":0.5,
+					"SRCashews":0.5
+				},
 				qty: 5,
 				cost: 700
-			}
+			}*/
 		],
 		/*selectedPackaging: {
 			smalls: 0,
@@ -63,7 +68,7 @@ function shoppingCartsFactory($log) {
 	function addASize(startingValue) {
 		//TODO: REMOVE THIS LATER
 		//notify the user what is coming in and what is going out
-		$log.info('got this', startingValue, ' returning this ', startingValue + 1);
+		//$log.info('got this', startingValue, ' returning this ', startingValue + 1);
 
 		//incriment the starting value 
 		return startingValue + 1;
@@ -73,14 +78,18 @@ function shoppingCartsFactory($log) {
 		if(startingValue > 0) {
 			//TODO: REMOVE THIS LATER
 			//notify the user what is coming in and what is going out
-			$log.info('got this', startingValue, ' returning this ', startingValue - 1);
+			//$log.info('got this', startingValue, ' returning this ', startingValue - 1);
 
 			//incriment the starting value 
 			return startingValue - 1;
 		} else return 0;		
 	}
 	function addFilledPackage(newPackage) {
+		//notify us that the package was received
 		$log.info('adding a new package now', newPackage);
+
+		//return the package
+		return newPackage;
 	}
 	function removeAPackage(size, id) {}
 
@@ -100,8 +109,6 @@ function shoppingCartsFactory($log) {
 		allItems.forEach(function(item) {
 			total += ((item.cost * item.qty) / 100);
 		});	
-
-		$log.info('got this total', total);
 
 		return total.toFixed(2);
 	}

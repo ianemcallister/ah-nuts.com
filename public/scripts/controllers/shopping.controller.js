@@ -23,14 +23,14 @@ function shoppingController($log, shoppingCartsFactory, fillingsFactory, priceLi
 		//{}, 		//state
 	);
 
-	$log.info(vm.currentState.flavorsBtnList);
+	//$log.info(vm.currentState.flavorsBtnList);
 	
 	//view model functions
 
 	//when a tab is selected change the tab
 	vm.updateSelectedTab = function(tab) {
 		vm.currentState.activeTab = tab;
-		$log.info('changing to tab', vm.currentState.activeTab);
+		//$log.info('changing to tab', vm.currentState.activeTab);
 	}
 
 
