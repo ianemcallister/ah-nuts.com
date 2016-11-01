@@ -129,14 +129,14 @@ function packagingFiller() {
 	    *	cart object.
 	    */
 	    vm.addToCart = function(checkOut) {		//add the current item to the cart
-	    	
+
 	    	//define the local variables
 	    	var thisPackaging = vm.state.packaging.size;
 	    	var thisMixture = vm.state.packaging.mix;
 	    	var thisQuantity = vm.qty;
 	    	var thisCost = vm.pricing.calculatePurchasePrice(vm.state.packaging, vm.pricing);
 	    	var thisDescription = vm.pricing.buildDescription(vm.state.packaging, vm.pricing);
-	    	
+
 	    	//build the item
 	    	var itemForPurchase = {
 	    		description: thisDescription,

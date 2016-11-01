@@ -37,6 +37,8 @@ function stateFactory($log) {
 					flavorList: {
 						0: {
 							"title": "Secret Recipe Pecans",
+							'type': 'Pecans',
+							'recipe': 'Secret Recipe',
 							selected: false,
 							proportion: 0.00,
 							classes: {
@@ -47,6 +49,8 @@ function stateFactory($log) {
 						},
 			    		1: {
 			    			"title": "Drunken Pecans",
+							'type': 'Pecans',
+							'recipe': 'Drunken',
 							selected: false,
 							proportion: 0.00,
 							classes: {
@@ -57,6 +61,8 @@ function stateFactory($log) {
 						},
 			    		2: {
 			    			"title": "Cinnamon Pecans",
+							'type': 'Pecans',
+							'recipe': 'Cinnamon',
 							selected: false,
 							proportion: 0.00,
 							classes: {
@@ -67,6 +73,8 @@ function stateFactory($log) {
 						},
 			    		3: {
 			    			"title": "Secret Recipe Almonds",
+							'type': 'Almonds',
+							'recipe': 'Secret Recipe',
 							selected: false,
 							proportion: 0.00,
 							classes: {
@@ -76,7 +84,9 @@ function stateFactory($log) {
 							}
 						},
 			    		4: {
-			    			"title":"Cinnamon Pecans",
+			    			"title":"Cinnamon Almonds",
+							'type': 'Almonds',
+							'recipe': 'Cinnamon',
 							selected: false,
 							proportion: 0.00,
 							classes: {
@@ -87,6 +97,8 @@ function stateFactory($log) {
 						},    			
 			    		5: {
 			    			"title":"Secret Recipe Cashews",
+							'type': 'Cashews',
+							'recipe': 'Secret Recipe',
 							selected: false,
 							proportion: 0.00,
 							classes: {
@@ -97,6 +109,8 @@ function stateFactory($log) {
 						},    			
 			    		6: {
 			    			"title":"Secret Recipe Peanuts",
+							'type': 'Peanuts',
+							'recipe': 'Secret Recipe',
 							selected: false,
 							proportion: 0.00,
 							classes: {
@@ -105,6 +119,23 @@ function stateFactory($log) {
 								selectedProductFlavor: false
 							}
 						}    	
+					},
+					aquisition: {
+						addressed: false,
+						pickup: {
+							selected: false,
+							classes: {
+								'glyphicon': true,
+								'glyphicon-ok': false
+							}
+						},
+						ship: {
+							selected: false,
+							classes: {
+								'glyphicon': true,
+								'glyphicon-ok': false
+							}
+						}
 					}
 				}
 			}

@@ -16,6 +16,7 @@ function aquisitionManager() {
 		templateUrl: 'views/directives/aquisitionManager.directive.htm',
 		replace: true,
 		scope: {
+			state: "="
 		},
 		link: linkFunc,
 		controller: aquisitionManagerController,
@@ -30,8 +31,29 @@ function aquisitionManager() {
     aquisitionManagerController.$inject = ['$scope', '$log'];
     /* @ngInject */
     function aquisitionManagerController($scope, $log) {
+	    
+    	//local variables
 	    var vm = this;
 
+	    //view model methods
+	    vm.methodClicked = function(method) {
+	    	//local variables
+	    	var opposite = '';
+
+	    	//activate addressed
+	    	vm.state.buttons.aquisition.addressed = true;
+
+	    	//select the proper option
+	    	vm.state.buttons.aquisition[method].selected = true;
+	    	vm.state.buttons.aquisition[method].classes['glyphicon-ok'] = true;
+
+	    	//unselect the opposite
+	    	if(method == 'pickup') opposite = 'ship';
+	    	else opposite = 'pickup';
+
+	    	vm.state.buttons.aquisition[opposite].selected = false;
+	    	vm.state.buttons.aquisition[opposite].classes['glyphicon-ok'] = false;
+	    }
 	}
 
 	return  directive;
