@@ -80,6 +80,7 @@
 				Location: <br>
 				<input type="text" name="" style='color:black' class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			</label>
+
 		</div>		
 	</div>
 
@@ -117,8 +118,16 @@
 				Street Address: <br>
 				<input type="text" name="" style='color:black' class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			</label>
-
+			
+			<!--Shipping Options-->
+			<shipping-options>
+			</shipping-options>
 		</div>
+	</div>
+
+	<div class="" ng-if='vm.state.buttons.aquisition.ship.selected || vm.state.buttons.aquisition.pickup.selected'>
+		<!--Submit & Checkout-->
+		<button class="btn btn-primary col-xs-12 col-sm-12 col-md-12 col-lg-12">Submit & Checkout</button>
 	</div>
 
 </div>

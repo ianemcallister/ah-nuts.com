@@ -16,6 +16,11 @@ function config($routeProvider) {
         controller: 'shoppingController',
         controllerAs: 'vm'
     })
+    .when('/shop/receipt', {
+        templateUrl: 'views/orderReceipt.htm',
+        controller: 'shoppingReceiptController',
+        controllerAs: 'vm'
+    })
     //define the locations routes
     .when('/locations', {
         templateUrl: 'views/locations.htm',
