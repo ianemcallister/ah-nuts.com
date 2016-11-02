@@ -34,7 +34,85 @@ function stateFactory($log) {
 					"cost": 0
 				},
 				buttons: {
-					flavorList: {
+					typeList: {
+						0: {
+							type: 'Pecans',
+							selected: false,
+							classes: {
+								availProductFlavor: true,
+								unAvailProductFlavor: false,
+								selectedProductFlavor: false
+							},
+							recipies: 3,
+							flavors: {
+								0: {
+									recipe: 'SR',
+									selected: false
+								},
+								1: {
+									recipe: 'Drunk',
+									selected: false
+								},
+								2: {
+									recipe: 'Cinn',
+									selected: false
+								}
+							}
+						},
+						1: {
+							type: 'Almonds',
+							selected: false,
+							classes: {
+								availProductFlavor: true,
+								unAvailProductFlavor: false,
+								selectedProductFlavor: false
+							},
+							recipies: 2,
+							flavors: {
+								0: {
+									recipe: 'SR',
+									selected: false
+								},
+								1: {
+									recipe: 'Cinn',
+									selected: false
+								}
+							}
+						},
+						2: {
+							type: 'Cashews',
+							selected: false,
+							classes: {
+								availProductFlavor: true,
+								unAvailProductFlavor: false,
+								selectedProductFlavor: false
+							},
+							recipies: 1,
+							flavors: {
+								0: {
+									recipe: 'SR',
+									selected: false
+								}
+							}
+						},
+						3: {
+							type: 'Peanuts',
+							selected: false,
+							classes: {
+								availProductFlavor: true,
+								unAvailProductFlavor: false,
+								selectedProductFlavor: false
+							},
+							recipies: 1,
+							flavors: {
+								0: {
+									recipe: 'SR',
+									selected: false
+								}
+							}
+						},
+					},
+					flavorList: {		//TODO: TAKE THIS OUT LATER
 						0: {
 							"title": "Secret Recipe Pecans",
 							'type': 'Pecans',

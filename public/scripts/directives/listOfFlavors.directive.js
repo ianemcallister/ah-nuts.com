@@ -52,6 +52,8 @@ function listOfFlavors() {
 	    //view model methods
 	    vm.clickAFlavor = function(index) {
 	    	
+	    	$log.info('clicking', index);
+	    	
 	    	//define local variable
 	    	var adding = false;
 

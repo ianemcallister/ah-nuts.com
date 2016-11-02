@@ -5,7 +5,7 @@ angular
 shoppingReceiptController.$inject = ['$log'];
 
 /* @ngInject */
-function shoppingController($log) {
+function shoppingReceiptController($log) {
 
 	//define the local variable
 	var vm = this;

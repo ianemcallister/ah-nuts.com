@@ -1,6 +1,4 @@
 <div>
-	<!--Header-->
-	<div class='headerChalk' style="color:green">Fill It Up:</div>
 	
 	<!--Only show if a packaging has been selected-->
 	<div ng-if='vm.state.packaging.selected'>
@@ -8,16 +6,19 @@
 		<div class="row">
 			<!--Designate the type-->
 			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-				Type: {{vm.pricing.packaging[vm.state.packaging.size].title}}
+				<h4>
+					{{vm.pricing.packaging[vm.state.packaging.size].title}}
+					<span ng-if='vm.state.packaging.size < 3'> Cone</spa>
+				</h4>
 			</div>
 			
 			<!--Provide discart button-->
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-				<button class='btn btn-warning' ng-click='vm.discardButtonClicked()'>discard</button>
+				<button class='btn btn-warning' ng-click='vm.discardButtonClicked()'>Wrong Size</button>
 			</div>			
 		</div>
 
-		<div class="row">
+		<div class="row" style='padding-top: 10px; padding-bottom: 10px;'>
 
 			<!--Visualization-->
 			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
@@ -33,8 +34,9 @@
 			</div>
 			
 			<!--Flavors List-->
-			<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-				<list-of-flavors 	flavors='vm.state.buttons.flavorList'
+			<div 	class="col-xs-7 col-sm-7 col-md-7 col-lg-7"
+					style='padding-left: 0px; padding-right: 0px;'>
+				<list-of-flavors 	flavors='vm.state.buttons.typeList'
 									pick-a-flavor='vm.pickAFlavor'>
 				</list-of-flavors>				
 			</div>
@@ -42,12 +44,22 @@
 		</div>
 		
 		<!--Quantity-->
-		<qty-manager qty='vm.qty'>
-		</qty-manager>
+		<div class="row" style='padding-top: 10px; padding-bottom: 10px;'>
+			<qty-manager qty='vm.qty'>
+			</qty-manager>
+		</div>
 		
 		<!--Add to Cart Button-->
-		<button class='btn btn-success' ng-click='vm.addToCart(true)'>Add To Cart & Checkout</button>
-		<button class='btn btn-success' ng-click='vm.addToCart(false)'>Add To Cart & Keep Shopping</button>
+		<div class="row">
+			<button 	class='btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6' 
+						ng-click='vm.addToCart(false)'>
+				ADD MORE
+			</button>
+			<button 	class='btn btn-success col-xs-6 col-sm-6 col-md-6 col-lg-6' 
+						ng-click='vm.addToCart(true)'>
+				I'M DONE
+			</button>
+		</div>
 
 	</div>
 

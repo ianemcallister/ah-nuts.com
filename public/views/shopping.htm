@@ -28,6 +28,9 @@
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
 		
 		<!--Select A Size-->
+		<!--Header-->
+		<div class='headerChalk' style="color:green">1. Choose A Size</div>
+		<!--Details-->
 		<select-packaging 	ng-if='vm.currentState.activeTab==0'
 							pricing='vm.priceList'
 							change-tab='vm.updateSelectedTab'
@@ -35,6 +38,9 @@
 		</select-packaging>
 		
 		<!--Fill Packaging-->
+		<!--Header-->
+		<div class='headerChalk' style="color:green">2. Fill It Up</div>
+		<!--Details-->
 		<packaging-filler 	ng-if='vm.currentState.activeTab==1'
 							style='color:yellow'
 							cart='vm.cart'
@@ -45,12 +51,18 @@
 		</packaging-filler>
 
 		<!--Select Shipping or Pickup-->
+		<!--Header-->
+		<div class='headerChalk' style="color:green">3. How To Get It</div>
+		<!--Details-->
 		<aquisition-manager style='color:yellow'
 							ng-if='vm.currentState.activeTab==2'
 							state='vm.currentState'>	
 		</aquisition-manager>
 
 		<!--Provide Payment-->
+		<!--Header-->
+		<div class='headerChalk' style="color:green">4. Finish & Pay</div>
+		<!--Details-->
 		<payment-manager	style='color:yellow'
 							ng-if='vm.currentState.activeTab==3'>
 			

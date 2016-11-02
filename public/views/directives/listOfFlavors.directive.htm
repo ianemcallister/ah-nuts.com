@@ -1,11 +1,63 @@
 <div>
-	This is the list of flavors
+
+	<div 	class="row" 
+			ng-repeat='flavor in vm.flavors track by $index'
+			ng-class='flavor.classes'
+			style='border-radius: 5px;'
+			ng-click='vm.clickAFlavor($index)'>
+		
+		<!--Nuts-->
+		<div 	class="col-xs-12 col-sm-12 col-md-12 col-lg-12" 
+				style='font-size: 1.5em; text-align: center; padding-top: 10px; padding-bottom: 10px;'>
+			
+			<strong>{{flavor.type}}</strong>
+			
+			<!--3 Flavors-->
+			<div 	class="row" 
+					ng-if='flavor.recipies == 3 && flavor.selected'>
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">SR</div>
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">Drunk</div>
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Cinn</div>
+			</div>
+			
+			<!--2 Flavors-->
+			<div 	class="row" 
+					ng-if='flavor.recipies == 2 && flavor.selected'>
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">SR</div>
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Cinn</div>
+			</div>
+
+			<!--1 Flavor-->
+			<div 	class="row" 
+					ng-if='flavor.recipies == 1 && flavor.selected'>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">SR</div>
+			</div>
+
+		</div>
+	
+	</div>
+
+	<!--
 	<ul style='list-style:none; padding-left: 0px'>
 		<li 	ng-repeat='flavor in vm.flavors track by $index'
 				value='{{flavor}}'
 				ng-class='flavor.classes'
-				ng-click='vm.clickAFlavor($index)'>
-			{{flavor.title}}
+				ng-click='vm.clickAFlavor($index)'
+				style='height:30px; padding-left: 5px; padding-top: 5px; border-radius: 5px;'>
+			<strong>{{flavor.title}}</strong>
+	-->
+			<!--3 Flavors-->
+	<!---		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">SR</div>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Drunk</div>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Cinn</div>
+	-->
+			<!--2 Flavors-->
+	<!--		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">SR</div>
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Cinn</div>	
+	-->
+			<!--1 Flavor-->
+	<!--		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">SR</div>	
 		</li>
 		</ul>
+	-->
 </div>
