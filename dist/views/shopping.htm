@@ -29,7 +29,11 @@
 		
 		<!--Select A Size-->
 		<!--Header-->
-		<div class='headerChalk' style="color:green">1. Choose A Size</div>
+		<div 	class='headerChalk' 
+				style="color:green"
+				ng-click='vm.updateSelectedTab(0)'>
+			1. Choose A Size
+		</div>
 		<!--Details-->
 		<select-packaging 	ng-if='vm.currentState.activeTab==0'
 							pricing='vm.priceList'
@@ -39,7 +43,11 @@
 		
 		<!--Fill Packaging-->
 		<!--Header-->
-		<div class='headerChalk' style="color:green">2. Fill It Up</div>
+		<div 	class='headerChalk' 
+				style="color:green"
+				ng-click='vm.updateSelectedTab(1)'>
+			2. Fill It Up
+		</div>
 		<!--Details-->
 		<packaging-filler 	ng-if='vm.currentState.activeTab==1'
 							style='color:yellow'
@@ -52,16 +60,27 @@
 
 		<!--Select Shipping or Pickup-->
 		<!--Header-->
-		<div class='headerChalk' style="color:green">3. How To Get It</div>
+		<div 	class='headerChalk' 
+				style="color:green"
+				ng-click='vm.updateSelectedTab(2)'>
+			3. How To Get It
+		</div>
+		
 		<!--Details-->
 		<aquisition-manager style='color:yellow'
 							ng-if='vm.currentState.activeTab==2'
-							state='vm.currentState'>	
+							state='vm.currentState'
+							change-tab='vm.updateSelectedTab'>	
 		</aquisition-manager>
 
 		<!--Provide Payment-->
 		<!--Header-->
-		<div class='headerChalk' style="color:green">4. Finish & Pay</div>
+		<div 	class='headerChalk' 
+				style="color:green"
+				ng-click='vm.updateSelectedTab(3)'>
+			4. Finish & Pay
+		</div>
+		
 		<!--Details-->
 		<payment-manager	style='color:yellow'
 							ng-if='vm.currentState.activeTab==3'>

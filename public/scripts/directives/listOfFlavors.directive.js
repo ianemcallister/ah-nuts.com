@@ -53,7 +53,7 @@ function listOfFlavors() {
 	    vm.clickAFlavor = function(index) {
 	    	
 	    	$log.info('clicking', index);
-	    	
+
 	    	//define local variable
 	    	var adding = false;
 
@@ -76,6 +76,10 @@ function listOfFlavors() {
 
 	    	//pass the flavor up to the parent
 	    	vm.pickAFlavor()(index, adding);
+	    }
+
+	    vm.test = function() {
+	    	$log.info('click Test');
 	    }
 	}
 

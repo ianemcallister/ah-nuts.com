@@ -15,22 +15,35 @@
 			<!--3 Flavors-->
 			<div 	class="row" 
 					ng-if='flavor.recipies == 3 && flavor.selected'>
-				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">SR</div>
-				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">Drunk</div>
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Cinn</div>
+				<div 	class="col-xs-4 col-sm-4 col-md-4 col-lg-4"
+						ng-repeat='recipe in flavor.flavors track by $index'
+						ng-class='recipe.classes'
+						ng-click='vm.test()'>
+					{{recipe.recipe}}
+				</div>
 			</div>
 			
 			<!--2 Flavors-->
 			<div 	class="row" 
 					ng-if='flavor.recipies == 2 && flavor.selected'>
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">SR</div>
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Cinn</div>
+				<div 	class="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+						ng-repeat='recipe in flavor.flavors track by $index'
+						ng-class='recipe.classes'
+						ng-click='vm.test()'>
+					{{recipe.recipe}}
+				</div>
+
 			</div>
 
 			<!--1 Flavor-->
 			<div 	class="row" 
 					ng-if='flavor.recipies == 1 && flavor.selected'>
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">SR</div>
+				<div 	class="col-xs-12 col-sm-12 col-md-12 col-lg-12"
+						ng-repeat='recipe in flavor.flavors track by $index'
+						ng-class='recipe.classes'
+						ng-click='vm.test()'>
+					{{recipe.recipe}}
+				</div>
 			</div>
 
 		</div>

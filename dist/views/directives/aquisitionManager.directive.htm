@@ -127,7 +127,11 @@
 
 	<div class="" ng-if='vm.state.buttons.aquisition.ship.selected || vm.state.buttons.aquisition.pickup.selected'>
 		<!--Submit & Checkout-->
-		<button class="btn btn-primary col-xs-12 col-sm-12 col-md-12 col-lg-12">Submit & Checkout</button>
+		<button 	class="btn btn-primary col-xs-12 col-sm-12 col-md-12 col-lg-12"
+					ng-click='vm.changeTab()(3)'>
+					
+			Submit & Checkout
+		</button>
 	</div>
 
 </div>

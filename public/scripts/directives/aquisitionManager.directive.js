@@ -16,7 +16,8 @@ function aquisitionManager() {
 		templateUrl: 'views/directives/aquisitionManager.directive.htm',
 		replace: true,
 		scope: {
-			state: "="
+			state: "=",
+			changeTab: '&'
 		},
 		link: linkFunc,
 		controller: aquisitionManagerController,
