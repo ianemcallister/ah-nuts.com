@@ -15,7 +15,9 @@ function emailHelper() {
 		restrict: 'AECM',
 		templateUrl: 'views/directives/emailHelper.directive.htm',
 		replace: true,
-		scope: {},
+		scope: {
+			redirect: '&'
+		},
 		link: linkFunc,
 		controller: emailHelperController,
 		controllerAs: 'vm',
@@ -115,8 +117,12 @@ function emailHelper() {
 
 	    vm.submitMessage = function() {
 
-
-
+	    	//pass the answers object to the server
+	    	//1. If There Was An Error
+	    	//2. If Message Was Sent Sucessfully
+	    	//notify the user of the sucess
+	    	//then return to the home page?? 
+	    	vm.redirect('');
 	    }
 	}
 
