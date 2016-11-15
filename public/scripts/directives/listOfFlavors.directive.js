@@ -50,13 +50,16 @@ function listOfFlavors() {
 	    function makeBtnUnAvail(index) {}
 
 	    //view model methods
-	    vm.clickAFlavor = function(index) {
+	    vm.clickANut = function(index, recipe) {
 	    	
-	    	$log.info('clicking', index);
+	    	$log.info('clicking', index, recipe);
+
+	    	if(index >=10) index = (index / 10) - 1;
 
 	    	//define local variable
 	    	var adding = false;
 
+	   
 	    	//when a flavor is clicked must
 	    	//check if it is allowed to be clicked
 	    	//flip the selected state
@@ -77,6 +80,8 @@ function listOfFlavors() {
 	    	//pass the flavor up to the parent
 	    	vm.pickAFlavor()(index, adding);
 	    }
+
+	   
 
 	    vm.test = function() {
 	    	$log.info('click Test');

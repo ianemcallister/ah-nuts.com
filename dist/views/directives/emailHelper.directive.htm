@@ -1,17 +1,87 @@
 <div>
 	<!--Message-->
-	<div class='headerChalk' style="color:green">Send Us A Message</div>
-
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
-		<label for="name">Name:</label>
-		<input type="text" id='name'>
-
-		<!--TO DO: ADD EMAIL VALIDATION LATER-->
-		<label for="email">E-Mail:</label>
-		<input type="email" id='email'>
-
-		<label for="message">Your Message:</label>
-		<textarea id='message'></textarea>
+	<div 	class='headerChalk' 
+			style="color:green; text-align: center;">
+		Send Us A Message
 	</div>
-	<input type="submit" class='btn btn-success'>
+	
+	<!--Inputs: Name-->
+	<div class="row">
+		<!--error reporting-->
+		<div 	ng-if='vm.form.name.error.display'
+				class="col-xs-12 col-sm-12 col-md-12 col-lg-12 errorMessage">
+			<span style='margin-left: 20px;'>{{vm.form.name.error.message}}</span>
+		</div>
+		<!--input-->
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<label 	class='col-xs-3 col-sm-3 col-md-3 col-lg-3' 
+					for="name" 
+					style="color:yellow;">
+				Name:
+			</label>
+			<input 	class='col-xs-8 col-sm-8 col-md-8 col-lg-8' 
+					type="text" 
+					id='name'
+					ng-model='vm.answers.name.value'
+					placeholder='Mickey Mouse'
+					ng-keyup="vm.checkName(vm.answers.name.value)"
+					ng-blur="vm.nameAttempt(vm.answers.name.value)">
+		</div>
+	</div>
+
+	<!--Inputs: E-Mail-->
+	<div class="row">
+		<!--error reporting-->
+		<div 	ng-if='vm.form.email.error.display'
+				class="col-xs-12 col-sm-12 col-md-12 col-lg-12 errorMessage">
+			<span style='margin-left: 20px;'>{{vm.form.email.error.message}}</span>
+		</div>
+		<!--input-->
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<!--TO DO: ADD EMAIL VALIDATION LATER-->
+			<label 	class='col-xs-3 col-sm-3 col-md-3 col-lg-3' 
+					for="email" 
+					style="color:yellow;">
+				E-Mail:
+			</label>
+			<input 	class='col-xs-8 col-sm-8 col-md-8 col-lg-8' 
+					type="email" 
+					id='email'
+					placeholder='Mickey.Mouse@WD.com'
+					ng-model='vm.answers.email.value'>
+		</div>
+	</div>
+
+	<!--Inputs: Message-->
+	<div class="row">
+		<!--error reporting-->
+		<div 	ng-if='vm.form.message.error.display'
+				class="col-xs-12 col-sm-12 col-md-12 col-lg-12 errorMessage">
+			<span style='margin-left: 20px;'>{{vm.form.message.error.message}}</span>
+		</div>
+		<!--input-->
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<label 	class='col-xs-12 col-sm-12 col-md-12 col-lg-12' 
+					for="message" 
+					style="color:yellow;">
+				Your Message:
+			</label>
+			<textarea 	class='col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1' 
+						id='message'
+						ng-model='vm.answers.message.value'
+						placeholder='These nuts are amazing!!!'>	
+			</textarea>
+		</div>
+	</div>
+
+		<!--Inputs: Submit-->
+	<div class="row" style='margin-top: 20px;'>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<input 	class='col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 btn btn-warning' 
+					type="submit" 
+					ng-class='vm.form'
+					ng-click='vm.submitMessage()'>
+		</div>
+	</div>
+
 </div>
