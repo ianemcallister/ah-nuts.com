@@ -1,0 +1,9 @@
+<div>
+	This is the region finder
+	<ul>
+		<li ng-repeat='usState in vm.states track by $index'
+			ng-click='vm.selectState($index)'>
+			{{usState.name}}
+		</li>
+	</ul>
+</div>

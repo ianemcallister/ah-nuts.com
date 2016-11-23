@@ -1,17 +1,40 @@
 <div>
+	<!--TO DO: REMOVE THIS LATER, JUST FOR DEV
+	regionFinder: {{vm.state.regionFinder.visable}} <br>
+	locationsToday: {{vm.state.locationsToday.visable}} <br>
+	locationsThisWeek: {{vm.state.locationsThisWeek.visable}} <br>
+	locationsChronoView: {{vm.state.locationsChronoView.visable}} <br>-->
+	
+	<!--Region Finder-->
+	<div ng-if="vm.state.regionFinder.visable">
+		<!--<div id='westMap' ng-if=false></div>-->
+		<region-finder	location-redirect='vm.locationRedirect'>
+		</region-finder>
+	</div>
 
-	<!--The US Map - To get to region first-->
-	<div id='westMap' ng-if=false></div>
-
+	<!--Location Identifier-->
+	<div ng-if="vm.state.locationLabel.visable">
+		<h2 style='text-align: center'>Where To Find Us In <br> {{vm.statesObject[vm.selectedState]}}</h2>
+	</div>
+	
 	<!--Where To Find Us Today-->
-	<locations-today></locations-today>
+	<div ng-if="vm.state.locationsToday.visable">
+		<locations-today ></locations-today>
+	</div>
+	
 	
 	<!--Where We Usually Are (Week View)-->
-	<locations-this-week></locations-this-week>
+	<div ng-if="vm.state.locationsThisWeek.visable">
+		<locations-this-week></locations-this-week>
+	</div>
+	
 
-	<!--Locations Closest To You (Map View)-->
-	<locations-map-view></locations-map-view>
+	<!--Locations Closest To You (Map View)
+	<locations-map-view></locations-map-view>-->
 	
 	<!--Upcoming Markets/Events (Chronological List)-->
-	<locations-chrono-view></locations-chrono-view>
+	<div ng-if="vm.state.locationsChronoView.visable">
+		<locations-chrono-view></locations-chrono-view>
+	</div>
+	
 </div>
