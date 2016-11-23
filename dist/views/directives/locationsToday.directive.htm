@@ -1,12 +1,14 @@
 <div>
 	<!--Header-->
-	<div class='headerChalk' style="color:green">Today's Locations:</div>
-		
-	The locations today are {{ vm.todaysMarkets }}
-
+	<div class='headerChalk' style="color:green">Today:</div>
+	
 	<!--List-->
 	<ul style="color:yellow">
-		<li>11:00 AM - 4:00 PM: Anaheim Promenade (147 W Center Street, Anaheim, CA)</li>
+		<!--<li>11:00 AM - 4:00 PM: Anaheim Promenade (147 W Center Street, Anaheim, CA)</li>-->
+		<li ng-repeat='anEvent in vm.eventsList'> 
+			{{anEvent.name}} <br>
+			<span style='font-size: .8em'>{{anEvent.start}} - {{anEvent.end}}</span>
+		</li>
 	</ul>
 
 </div>

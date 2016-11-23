@@ -2,41 +2,14 @@ angular
     .module('ahNutsWebApp')
     .controller('locationsController', locationsController);
 
-locationsController.$inject = ['$log', '$routeParams', '$location'];
+locationsController.$inject = ['$log', '$routeParams', '$location', 'backendComFactory'];
 
 /* @ngInject */
-function locationsController($log, $routeParams, $location) {
+function locationsController($log, $routeParams, $location, backendComFactory) {
 
 	//define view model variable
 	var vm = this;
-
-	vm.selectedState = $routeParams.state;
-	vm.statesObject = {
-		"CA": "California",
-		"OR": "Oregon",
-		"UT": "Utah"
-	}
-
-	vm.state = {
-		regionFinder: {
-			visable: true
-		},
-		locationLabel: {
-			visable: false
-		},		
-		locationsToday: {
-			visable: false
-		},
-		locationsThisWeek: {
-			visable: false
-		},
-		locationsChronoView: {
-			visable: false
-		}
-	}
-
-	//notify the params for the time being	TODO: TAKE THIS OUT LATER
-	$log.info('params are: ', $routeParams);
+	var backend = backendComFactory;
 
 	//local methods
 	function setRegion() {
@@ -44,20 +17,61 @@ function locationsController($log, $routeParams, $location) {
 		vm.state.regionFinder.visable = false;
 		vm.state.locationLabel.visable = true;
 		vm.state.locationsToday.visable = true;
-		vm.state.locationsThisWeek.visable = true;
-		vm.state.locationsChronoView.visable = true;
+		vm.state.locationsThisWeek.visable = false;
+		vm.state.locationsChronoView.visable = false;
 
 	}
 
 	function init() {
 
+		//download locations model
+		vm.locationsModel = backend.getLocations();
+
+		//build required models
+	 	vm.selectedLocation = {
+			state: $routeParams.state,
+			region: $routeParams.region
+		};
+
+		vm.state = {
+			regionFinder: {
+				visable: true
+			},		
+			locationLabel: {
+				visable: false
+			},
+			everyDayLocations: {
+				visable: false
+			},
+			eventsAndMarkets: {
+				visable: true
+			},		
+			locationsToday: {
+				visable: false
+			},
+			locationsThisWeek: {
+				visable: false
+			},
+			locationsChronoView: {
+				visable: false
+			}
+		}
+
+		//notify the params for the time being	TODO: TAKE THIS OUT LATER
+		$log.info('params are: ', $routeParams);
+		$log.info('vm.locationsModel', vm.locationsModel);
+
 		//check for paramaters
 		//is there a state param?
 		if(typeof $routeParams.state != 'undefined') {
 
+			//check if that state is valid
+
 			$log.info('found a state');
 
 			setRegion();
+
+
 
 			//is there a region?
 			if(typeof $routeParams.region != 'undefined') {

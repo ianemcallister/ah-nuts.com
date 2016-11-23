@@ -29,6 +29,8 @@ function locationsThisWeek() {
     locationsThisWeekController.$inject = ['$scope', '$log'];
     /* @ngInject */
     function locationsThisWeekController($scope, $log) {
+	    
+	    //define the local variables
 	    var vm = this;
 
 	}

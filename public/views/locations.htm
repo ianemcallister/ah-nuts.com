@@ -14,27 +14,39 @@
 
 	<!--Location Identifier-->
 	<div ng-if="vm.state.locationLabel.visable">
-		<h2 style='text-align: center'>Where To Find Us In <br> {{vm.statesObject[vm.selectedState]}}</h2>
+		<h2 style='text-align: center'>
+			Where To Find Us In <br> 
+			{{vm.locationsModel[vm.selectedLocation.state].name}}
+		</h2>
 	</div>
 	
-	<!--Where To Find Us Today-->
-	<div ng-if="vm.state.locationsToday.visable">
-		<locations-today ></locations-today>
+	<!--Where To Find Us-->
+	<div ng-if='vm.state.everyDayLocations.visable'>
+		<h3>Everyday Locations:</h3>
 	</div>
-	
-	
-	<!--Where We Usually Are (Week View)-->
-	<div ng-if="vm.state.locationsThisWeek.visable">
-		<locations-this-week></locations-this-week>
+
+	<div ng-if='vm.state.eventsAndMarkets.visable'>
+		<!--Today-->
+		<h3>Events & Markets:</h3>
+		<div ng-if="vm.state.locationsToday.visable">
+			<locations-today selected-location='vm.locationsModel[vm.selectedLocation.state].events'>
+			</locations-today>
+		</div>
+
+		<!--This Week-->
+		<div ng-if="vm.state.locationsThisWeek.visable">
+			<locations-this-week selectedLocation=''>
+			</locations-this-week>
+		</div>
+
+		<!--Upcoming (Chronological List)-->
+		<div ng-if="vm.state.locationsChronoView.visable">
+			<locations-chrono-view selectedLocation=''>
+			</locations-chrono-view>
+		</div>
 	</div>
-	
 
 	<!--Locations Closest To You (Map View)
 	<locations-map-view></locations-map-view>-->
-	
-	<!--Upcoming Markets/Events (Chronological List)-->
-	<div ng-if="vm.state.locationsChronoView.visable">
-		<locations-chrono-view></locations-chrono-view>
-	</div>
 	
 </div>

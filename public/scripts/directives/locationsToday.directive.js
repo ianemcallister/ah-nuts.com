@@ -15,7 +15,9 @@ function locationsToday() {
 		restrict: 'AECM',
 		templateUrl: 'views/directives/locationsToday.directive.htm',
 		replace: true,
-		scope: {},
+		scope: {
+			selectedLocation: "="
+		},
 		link: linkFunc,
 		controller: locationsTodayController,
 		controllerAs: 'vm',
@@ -26,15 +28,62 @@ function locationsToday() {
 	function linkFunc(scope, el, attr, ctrl) {
     }
 
-    locationsTodayController.$inject = ['$scope', '$log', 'backendComFactory'];
+    locationsTodayController.$inject = ['$scope', '$log'];
     /* @ngInject */
-    function locationsTodayController($scope, $log, backendComFactory) {
+    function locationsTodayController($scope, $log) {
+	    
+	    //define the local variables
 	    var vm = this;
-	    var backend = backendComFactory;
 
-	    vm.todaysMarkets = backend.get();
+	    //define local methods
+	    function getTodaysLocationsList(allEvents) {
 
-	    console.log(vm.todaysMarkets);
+	    	var listOfEvents = [];
+
+	    	//unpack frequency
+	    	Object.keys(allEvents).forEach(function(frequencyKey) {
+
+	    		//define local variable
+	    		var frequency = allEvents[frequencyKey];
+
+	    		//unpack events
+	    		Object.keys(frequency).forEach(function(eventKey) {
+
+	    			//define local variables
+	    			var anEvent = frequency[eventKey];
+	    			var eventObject = {
+	    				'start': '1:00 PM',
+	    				'end': '4:00 PM',
+	    				'name': anEvent.name,
+	    				'address': '147 W. Center Street, Anaheim'
+	    			};
+
+	    			listOfEvents.push(eventObject);
+
+	    		});
+
+	    	});
+
+	    	return listOfEvents;
+	    }
+
+	    function init() {
+
+	    	//build the list of events
+	    	vm.eventsList = getTodaysLocationsList(vm.selectedLocation);
+	    }
+
+	    //build the view model variables
+	    //vm.todaysMarkets = backend.get();
+
+	    //console.log(vm.todaysMarkets);
+
+	    //log the initial values to the user
+	    $log.info('vm.selectedLocation', vm.selectedLocation);
+
+	    //init this directive
+	    init();
+	    
 	}
 
 	return  directive;
