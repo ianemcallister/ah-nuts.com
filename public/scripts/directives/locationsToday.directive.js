@@ -52,8 +52,8 @@ function locationsToday() {
 	    			//define local variables
 	    			var anEvent = frequency[eventKey];
 	    			var eventObject = {
-	    				'start': '1:00 PM',
-	    				'end': '4:00 PM',
+	    				'start': '64800000',
+	    				'end': '64800000',
 	    				'name': anEvent.name,
 	    				'address': '147 W. Center Street, Anaheim'
 	    			};
@@ -71,6 +71,10 @@ function locationsToday() {
 
 	    	//build the list of events
 	    	vm.eventsList = getTodaysLocationsList(vm.selectedLocation);
+
+	    	vm.todaysDate = new Date();
+
+	    	$log.info(vm.todaysDate);
 	    }
 
 	    //build the view model variables

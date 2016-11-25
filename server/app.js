@@ -2,8 +2,9 @@
 //declare dependencies
 var express = require('express');
 var bodyParser = require('body-parser');
-var firebase = require("firebase");
 var envVars = require('./config/local.env');
+var API = require('./API/api');
+var dataManagement = require('./API/dataManagement.js');
 
 //define the app
 var app = express();
@@ -19,18 +20,41 @@ var jsonParser = bodyParser.json();
 app.use(jsonParser); // for parsing application/json
 app.use(urlencodedParser); // for parsing application/x-www-form-urlencoded
 
-// Initialize Firebase
-var config = {
-  apiKey: envVars.APIKEY,
-  authDomain: envVars.AUTHDOMAIN,
-  databaseURL: envVars.DATABASEURL,
-  storageBucket: envVars.STORAGEBUCKET,
-};
-firebase.initializeApp(config);
-
-
 //tell it the folder to serve
 app.use(express.static('dist'));
+
+//define the routes
+app.get('/api/get/list/:name', function(req, res) {
+	
+	//call out to the FB db
+	API.getList(req.params.name)
+	.then(function(response) {
+
+		res.send(response);
+
+	}).catch(function(error) {
+
+		res.send({"error": "There Was An Error"});
+
+	});
+	
+});
+
+app.get('/api/admin/test', function(req, res) {
+
+	console.log('the url got hit');
+
+	/*dataManagement.downloadFromDB().then(function(response) {
+
+		res.send(response);
+
+	});*/
+
+	dataManagement.test().then(function(response) {
+		res.send(response);
+	})
+
+});
 
 //open the port for local development
 app.listen(port,function() {

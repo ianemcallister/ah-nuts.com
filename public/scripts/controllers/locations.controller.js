@@ -11,21 +11,39 @@ function locationsController($log, $routeParams, $location, backendComFactory) {
 	var vm = this;
 	var backend = backendComFactory;
 
+	//view model variables
+	vm.locationsModel = {};
+
 	//local methods
-	function setRegion() {
+	function _downloadLocations() {
+		//download locations model
+		backend.getLocations().then(function(response) {
+			
+			$log.info('got this in locations controller', response);
+			
+			//set the vm variable
+			vm.locationsModel = response;
+
+		
+		}).catch(function(e) {	
+			$log.info('there was an error', e);
+		});
+	}
+
+	function _setRegion() {
 		//if there is a region, don't need the location finder
 		vm.state.regionFinder.visable = false;
 		vm.state.locationLabel.visable = true;
-		vm.state.locationsToday.visable = true;
-		vm.state.locationsThisWeek.visable = false;
+		vm.state.locationsToday.visable = false;
+		vm.state.locationsThisWeek.visable = true;
 		vm.state.locationsChronoView.visable = false;
 
 	}
 
 	function init() {
 
-		//download locations model
-		vm.locationsModel = backend.getLocations();
+		//update the model for the view with the lastest location informaiton from the server
+		_downloadLocations();
 
 		//build required models
 	 	vm.selectedLocation = {
@@ -69,7 +87,7 @@ function locationsController($log, $routeParams, $location, backendComFactory) {
 
 			$log.info('found a state');
 
-			setRegion();
+			_setRegion();
 
 
 
@@ -102,6 +120,6 @@ function locationsController($log, $routeParams, $location, backendComFactory) {
 		$location.path(fullPath);
 	}
 
-	//init
+	//initialize the controller
 	init();
 }

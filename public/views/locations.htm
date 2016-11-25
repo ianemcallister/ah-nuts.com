@@ -1,9 +1,4 @@
 <div>
-	<!--TO DO: REMOVE THIS LATER, JUST FOR DEV
-	regionFinder: {{vm.state.regionFinder.visable}} <br>
-	locationsToday: {{vm.state.locationsToday.visable}} <br>
-	locationsThisWeek: {{vm.state.locationsThisWeek.visable}} <br>
-	locationsChronoView: {{vm.state.locationsChronoView.visable}} <br>-->
 	
 	<!--Region Finder-->
 	<div ng-if="vm.state.regionFinder.visable">
@@ -45,6 +40,8 @@
 			</locations-chrono-view>
 		</div>
 	</div>
+
+	{{vm.locationsModel}}
 
 	<!--Locations Closest To You (Map View)
 	<locations-map-view></locations-map-view>-->

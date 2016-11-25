@@ -12,116 +12,47 @@ function backendComFactory($log) {
 		getLocations: getLocations
 	};
 
+	function _get(url) {
+		return fetch(url);
+	}
+
+	function _getJSON(url) {
+		return _get(url).then(function(response) {
+			return response.json();
+		});
+	}
+
 	function get() {
+		
 		return new Promise(function(resolve, reject) {
-			resolve('it worked');
+			
+
 
 		});
 	}
 
 	function getLocations() {
-		var allLocations = {
-	    	"CA": {
-	    		"name": "California",
-	    		"distributors": {},
-	    		"events": {
-	    			"daily": {},
-	    			"weekly": {
-	    				0: {
-	    					"name": "Bixby Park Farmers Market",
-	    					"location": {},
-	    					"schedule": [
-	    						{
-	    							"startDate":"",
-	    							"finishDate": "",
-	    							"startTime": "",
-	    							"finsihTime": ""
-	    						}
-	    					]
-	    				},
-	    				1: {
-	    					"name": "USC Farmers Market",
-	    					"location": {},
-	    					"schedule": [
-	    						{
-	    							"startDate":"",
-	    							"finishDate": "",
-	    							"startTime": "",
-	    							"finsihTime": ""
-	    						}
-	    					]
-	    				},
-	    				2: {
-	    					"name": "Downtown Anaheim Farmers Market",
-	    					"location": {},
-	    					"schedule": [
-	    						{
-	    							"startDate":"",
-	    							"finishDate": "",
-	    							"startTime": "",
-	    							"finsihTime": ""
-	    						}
-	    					]
-	    				},
-	    				3: {
-	    					"name": "Huntington Beach Pier Farmers Market",
-	    					"location": {},
-	    					"schedule": [
-	    						{
-	    							"startDate":"",
-	    							"finishDate": "",
-	    							"startTime": "",
-	    							"finsihTime": ""
-	    						}
-	    					]
-	    				},
-	    				4: {
-	    					"name": "Redondo Beach Farmers Market",
-	    					"location": {},
-	    					"schedule": [
-	    						{
-	    							"startDate":"",
-	    							"finishDate": "",
-	    							"startTime": "",
-	    							"finsihTime": ""
-	    						}
-	    					]
-	    				}
-	    			},
-	    			"quarterly": {},
-	    			"yearly": {},
-	    			"oneOff": {}
-	    		}
-	    	},
-	    	"OR": {
-	    		"name": "Oregon",
-	    		"distributors": {},
-	    		"events": {
-	    			"daily": {},
-	    			"weekly": {
-	    				0: {
-	    					"name": "Beaverton Farmers Market",
-	    					"location": {},
-	    					"schedule": [
-	    						{
-	    							"startDate":"",
-	    							"finishDate": "",
-	    							"startTime": "",
-	    							"finsihTime": ""
-	    						}
-	    					]
-	    				}
-	    			},
-	    			"quarterly": {},
-	    			"yearly": {}
-	    		}
-	    	},
-	    	"UT": {
-	    		"name": "Utah"
-	    	}
-	    };
 
-		return allLocations;
+		return new Promise(function(resolve, reject) {
+
+			_getJSON('/api/get/list/events').then(function(response) {
+				
+				//notify the user
+				$log.info('success:', response);
+
+				//pass the response back
+				resolve(response);
+
+			}).catch(function(e) {
+
+				$log.info('error:', e);
+
+				reject(e);
+
+			});
+
+		});
+
 	}
 
 	return backendComElements;

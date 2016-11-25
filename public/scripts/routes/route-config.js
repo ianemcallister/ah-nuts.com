@@ -42,5 +42,10 @@ function config($routeProvider) {
         templateUrl: 'views/contact.htm',
         controller: 'contactController',
         controllerAs: 'vm'
+    })
+    .when('/admin/server/test', {
+        templateUrl: 'views/admin.htm',
+        controller: 'adminController',
+        controllerAs: 'vm'
     });
 }
