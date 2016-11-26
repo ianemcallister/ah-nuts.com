@@ -26,6 +26,8 @@ app.use(express.static('dist'));
 //define the routes
 app.get('/api/get/list/:name', function(req, res) {
 	
+	console.log('hitting the server:', req.params.name );
+
 	//call out to the FB db
 	API.getList(req.params.name)
 	.then(function(response) {

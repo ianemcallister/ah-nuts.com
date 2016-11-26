@@ -38,7 +38,7 @@ function backend($log) {
 			_getJSON('/api/get/list/regions').then(function(response) {
 				
 				//notify the user
-				$log.info('success:', response);
+				//$log.info('success:', response);
 
 				//pass the response back
 				resolve(response);

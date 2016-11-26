@@ -12,7 +12,13 @@ function locationData($log, backend) {
 	var _raw = {};
 	var _states = [];
 
+	this.set = function(variable, value) {
+		this[variable] = value
+	}
+
 	this.download = function() {
+		var ld = this;
+
 		//call database
 		return new Promise(function(resolve, reject) {
 
@@ -20,10 +26,12 @@ function locationData($log, backend) {
 			backend.getLocations().then(function(response) {
 
 				//save to _raw
+				ld.set('_raw', response);
 
 				//convert _raw to _states
 
 				//save to _states
+				ld.set('_states', ['California', 'Oregon']);
 
 				//return the _states list
 				resolve(response);				

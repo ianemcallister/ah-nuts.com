@@ -33,13 +33,23 @@ function regionFinder() {
     /* @ngInject */
     function regionFinderController($scope, $log) {
 	    var vm = this;
+	    var statesArray = []
 	    	
 	    //view model methods
 	    vm.selectState = function(id) {
-	    	$log.info('got this', vm.states[id]);
+
+	    	//make an array of the states keys
+	    	Object.keys(vm.states).forEach(function(key) {
+	    		statesArray.push(key);
+	    	});
+
+	    	//notify the user
+	    	var selectedState = statesArray[id];
+
+	    	$log.info('selectedState:', selectedState);
 
 	    	//pass the id back up to the locations controller
-	    	vm.locationRedirect()(vm.states[id]);
+	    	vm.locationRedirect()(selectedState);
 	    }
 
 	}

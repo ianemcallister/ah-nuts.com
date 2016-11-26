@@ -25,17 +25,26 @@ function config($routeProvider) {
     .when('/locations', {
         templateUrl: 'views/locations.htm',
         controller: 'locationsController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: { /* @ngInject */
+            locationsModel: loadLocationsModel
+        }
     })    
     .when('/locations/:state', {
         templateUrl: 'views/locations.htm',
         controller: 'locationsController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: { /* @ngInject */
+            locationsModel: loadLocationsModel
+        }
     })
     .when('/locations/:state/:region', {
         templateUrl: 'views/locations.htm',
         controller: 'locationsController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: { /* @ngInject */
+            locationsModel: loadLocationsModel
+        }
     })
     //define the contact routes
     .when('/contact', {
@@ -49,3 +58,18 @@ function config($routeProvider) {
         controllerAs: 'vm'
     });
 }
+
+function loadLocationsModel(locationData) {
+    return new Promise(function(resolve, reject) {
+        locationData.getList('states')
+            .then(function(response) {
+
+                resolve(response);
+
+            }).catch(function(error) {
+
+                reject('an error occured', error);
+            });
+    });
+};
+
