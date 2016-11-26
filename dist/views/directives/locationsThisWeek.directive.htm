@@ -2,7 +2,7 @@
 	<!--Header-->
 	<div class='headerChalk' style="color:green">This Week:</div>
 	
-	<!--Container-->
+	<!--Container
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style='color:yellow'>
 		
 			<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">Bixby</div>
@@ -12,15 +12,12 @@
 			<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">Bixby</div>
 			<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">Redondo</div>
 		
-	</div>
-
-	<!--
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style='color:yellow'>
-		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Bixby</div>
-		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Irvine</div>
-		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Anaheim</div>
-		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">HB Pier</div>
-		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Bixby</div>
-		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Redondo</div>
 	</div>-->
+
+	<ul style='color:yellow'>
+		<li ng-repeat='anEvent in vm.locationsThisWeek track by $index'>
+			{{anEvent}}
+		</li>
+	</ul>
+
 </div>

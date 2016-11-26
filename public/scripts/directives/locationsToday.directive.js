@@ -35,7 +35,8 @@ function locationsToday() {
 	    //define the local variables
 	    var vm = this;
 
-	    $log.info(vm.selectedLocation);
+	    //view model variables
+	    vm.eventsToday = false;
 
 	    //define local methods
 	    function getTodaysLocationsList(allEvents) {
@@ -53,14 +54,24 @@ function locationsToday() {
 
 	    			//define local variables
 	    			var anEvent = frequency[eventKey];
-	    			var eventObject = {
-	    				'start': '64800000',
-	    				'end': '64800000',
-	    				'name': anEvent.name,
-	    				'address': '147 W. Center Street, Anaheim'
-	    			};
+	    			var today = new Date();
+	    			var weekday = today.getDay();
 
-	    			listOfEvents.push(eventObject);
+	    			$log.info('weekeday', weekday);
+
+	    			if(anEvent.weekday == weekday) {
+		    			
+	    				vm.eventsToday = true;
+
+		    			var eventObject = {
+		    				'start': '64800000',
+		    				'end': '64800000',
+		    				'name': anEvent.name,
+		    				'address': '147 W. Center Street, Anaheim'
+		    			};
+
+		    			listOfEvents.push(eventObject);
+	    			}
 
 	    		});
 
@@ -78,11 +89,6 @@ function locationsToday() {
 
 	    	$log.info(vm.todaysDate);
 	    }
-
-	    //build the view model variables
-	    //vm.todaysMarkets = backend.get();
-
-	    //console.log(vm.todaysMarkets);
 
 	    //log the initial values to the user
 	    $log.info('vm.selectedLocation', vm.selectedLocation);

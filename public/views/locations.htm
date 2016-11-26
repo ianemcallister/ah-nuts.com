@@ -31,7 +31,7 @@
 
 		<!--This Week-->
 		<div ng-if="vm.state.locationsThisWeek.visable">
-			<locations-this-week selectedLocation=''>
+			<locations-this-week locations='vm.locationsModel[vm.selectedLocation.state].events'>
 			</locations-this-week>
 		</div>
 
