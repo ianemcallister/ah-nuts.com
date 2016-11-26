@@ -4,7 +4,7 @@
   "description": "Small Business Website",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV='production' node server/app.js",
+    "start": "NODE_ENV='production' node server/app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
