@@ -16,7 +16,8 @@ function regionFinder() {
 		templateUrl: 'views/directives/regionFinder.directive.htm',
 		replace: true,
 		scope: {
-			locationRedirect: '&'
+			locationRedirect: '&',
+			states: "="
 		},
 		link: linkFunc,
 		controller: regionFinderController,
@@ -32,23 +33,7 @@ function regionFinder() {
     /* @ngInject */
     function regionFinderController($scope, $log) {
 	    var vm = this;
-
-	    vm.states = [
-	    	{ 
-	    		"name": "California",
-	    		"id": "CA"
-	    	},
-	    	{
-	    	 	"name": "Oregon",
-	    	 	"id": "OR"
-	    	},
-	    	{
-	    		"name": "Utah",
-	    		"id": "UT"
-	    	}
-	    ];
 	    	
-
 	    //view model methods
 	    vm.selectState = function(id) {
 	    	$log.info('got this', vm.states[id]);

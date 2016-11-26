@@ -2,32 +2,29 @@ angular
     .module('ahNutsWebApp')
     .controller('locationsController', locationsController);
 
-locationsController.$inject = ['$log', '$routeParams', '$location', 'backendComFactory'];
+locationsController.$inject = ['$log', '$routeParams', '$location', 'locationData'];
 
 /* @ngInject */
-function locationsController($log, $routeParams, $location, backendComFactory) {
+function locationsController($log, $routeParams, $location, locationData) {
 
 	//define view model variable
 	var vm = this;
-	var backend = backendComFactory;
-
-	//view model variables
-	vm.locationsModel = {};
+	//var testModel = locationData;
 
 	//local methods
-	function _downloadLocations() {
-		//download locations model
-		backend.getLocations().then(function(response) {
-			
-			$log.info('got this in locations controller', response);
-			
-			//set the vm variable
+	function _getStatesList() {
+
+		//use the locationData service to aquire the states list
+		locationData.getList('states')
+		.then(function(response) {
+
 			vm.locationsModel = response;
 
-		
-		}).catch(function(e) {	
-			$log.info('there was an error', e);
+		}).catch(function(error) {
+
+			$log.info('an error occured', error);
 		});
+
 	}
 
 	function _setRegion() {
@@ -43,7 +40,7 @@ function locationsController($log, $routeParams, $location, backendComFactory) {
 	function init() {
 
 		//update the model for the view with the lastest location informaiton from the server
-		_downloadLocations();
+		_getStatesList();
 
 		//build required models
 	 	vm.selectedLocation = {
@@ -77,7 +74,6 @@ function locationsController($log, $routeParams, $location, backendComFactory) {
 
 		//notify the params for the time being	TODO: TAKE THIS OUT LATER
 		$log.info('params are: ', $routeParams);
-		$log.info('vm.locationsModel', vm.locationsModel);
 
 		//check for paramaters
 		//is there a state param?

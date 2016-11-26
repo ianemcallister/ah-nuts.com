@@ -1,11 +1,11 @@
 angular
     .module('ahNutsWebApp')
-    .factory('backendComFactory', backendComFactory);
+    .factory('backend', backend);
 
-backendComFactory.$inject = ['$log', '$http'];
+backend.$inject = ['$log', '$http'];
 
 /* @ngInject */
-function backendComFactory($log) {
+function backend($log) {
 
 	var backendComElements = {
 		get: get,
@@ -35,7 +35,7 @@ function backendComFactory($log) {
 
 		return new Promise(function(resolve, reject) {
 
-			_getJSON('/api/get/list/events').then(function(response) {
+			_getJSON('/api/get/list/regions').then(function(response) {
 				
 				//notify the user
 				$log.info('success:', response);
