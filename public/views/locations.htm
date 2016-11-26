@@ -21,8 +21,9 @@
 	</div>
 
 	<div ng-if='vm.state.eventsAndMarkets.visable'>
-		<!--Today-->
+		
 		<h3>Events & Markets:</h3>
+		<!--Today-->
 		<div ng-if="vm.state.locationsToday.visable">
 			<locations-today selected-location='vm.locationsModel[vm.selectedLocation.state].events'>
 			</locations-today>

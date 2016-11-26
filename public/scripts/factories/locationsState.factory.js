@@ -18,7 +18,7 @@ function locationsState($log) {
 			visable: false
 		},
 		eventsAndMarkets: {
-			visable: true
+			visable: false
 		},		
 		locationsToday: {
 			visable: false
@@ -40,14 +40,18 @@ function locationsState($log) {
 		if(id != undefined) {
 			locationsStateObject.regionFinder.visable = false;
 			locationsStateObject.locationLabel.visable = true;
-			locationsStateObject.locationsToday.visable = false;
+			locationsStateObject.everyDayLocations.visable = false;
+			locationsStateObject.eventsAndMarkets.visable = true;
+			locationsStateObject.locationsToday.visable = true;
 			locationsStateObject.locationsThisWeek.visable = true;
 			locationsStateObject.locationsChronoView.visable = false;
 		} else {
 			locationsStateObject.regionFinder.visable = true;
 			locationsStateObject.locationLabel.visable = false;
+			locationsStateObject.everyDayLocations.visable = false;
+			locationsStateObject.eventsAndMarkets.visable = false;
 			locationsStateObject.locationsToday.visable = false;
-			locationsStateObject.locationsThisWeek.visable = true;
+			locationsStateObject.locationsThisWeek.visable = false;
 			locationsStateObject.locationsChronoView.visable = false;			
 		}
 

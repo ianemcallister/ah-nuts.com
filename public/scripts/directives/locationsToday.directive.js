@@ -35,6 +35,8 @@ function locationsToday() {
 	    //define the local variables
 	    var vm = this;
 
+	    $log.info(vm.selectedLocation);
+
 	    //define local methods
 	    function getTodaysLocationsList(allEvents) {
 
