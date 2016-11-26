@@ -1,6 +1,7 @@
 #ignore config files
 /server/config/local.env.js
 /server/config/firebase.admin.js
+/server/config/firebaseConfig.json
 
 #ignore any images
 

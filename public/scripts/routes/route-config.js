@@ -60,6 +60,8 @@ function config($routeProvider) {
 }
 
 function loadLocationsModel(locationData) {
+    console.log('trying to load location model');
+
     return new Promise(function(resolve, reject) {
         locationData.getList('states')
             .then(function(response) {

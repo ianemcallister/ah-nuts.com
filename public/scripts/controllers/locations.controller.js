@@ -19,7 +19,8 @@ function locationsController($log, $routeParams, $location, locationsModel, loca
 	vm.state = locationsState.state($routeParams.state, vm.locationsModel);
 
 	//local methods
-
+	$log.info('locationsModel', vm.locationsModel);
+	
 	//view methods
 	vm.locationRedirect = function(state, region) {
 		

@@ -2,10 +2,10 @@ angular
     .module('ahNutsWebApp')
     .factory('backend', backend);
 
-backend.$inject = ['$log', '$http'];
+backend.$inject = ['$log', '$http', 'firebase'];
 
 /* @ngInject */
-function backend($log) {
+function backend($log, firebase) {
 
 	var backendComElements = {
 		get: get,
@@ -35,6 +35,10 @@ function backend($log) {
 
 		return new Promise(function(resolve, reject) {
 
+			$log.info('going out to server');
+
+			//firebase.test();
+			
 			_getJSON('/api/get/list/regions').then(function(response) {
 				
 				//notify the user

@@ -29,8 +29,8 @@ gulp.task('copy-html', function() {
 		.pipe(gulp.dest('dist/views'));
 });
 
-gulp.task('scripts-dist', function() {
-	gulp.src([
+gulp.task('scripts-dist', function() {	
+	return gulp.src([
 		'public/**/*.js'
 		])
 		.pipe(sourcemaps.init())
@@ -39,7 +39,18 @@ gulp.task('scripts-dist', function() {
 		.pipe(uglify())
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('dist/scripts'));
+
 });
+
+/*gulp.task('config', function() {
+	return gulp.src('server/config/firebaseConfig.json')
+		.pipe(gulpNgConfig('ahNutsWebApp'))
+		.pipe(gulp.dest('public/scripts/config'));
+});
+
+gulp.task('clean-scripts', function() {
+	return del(['public/scripts/config/firebaseConfig.js']);
+});*/
 
 gulp.task('scripts-dev', function() {
 	gulp.src([

@@ -2,10 +2,10 @@ angular
     .module('ahNutsWebApp')
     .service('locationData', locationData);
 
-locationData.$inject = ['$log', 'backend'];
+locationData.$inject = ['$log', 'backend', 'firebase'];
 
 /* @ngInject */
-function locationData($log, backend) {
+function locationData($log, backend, firebase) {
 	var lists = {
 		"states": 0
 	};
@@ -18,6 +18,8 @@ function locationData($log, backend) {
 
 	this.download = function() {
 		var ld = this;
+
+		$log.info('loading Locaiton Data');
 
 		//call database
 		return new Promise(function(resolve, reject) {
@@ -35,7 +37,8 @@ function locationData($log, backend) {
 
 				//return the _states list
 				resolve(response);				
-
+				//resolve({'testing':'good test'})
+				
 			}).catch(function(error) {
 
 			});
@@ -50,6 +53,8 @@ function locationData($log, backend) {
 
 	this.getList = function(list) {
 		var ld = this;
+
+		//firebase.test();
 
 		switch(lists[list]) {
 			case 0:

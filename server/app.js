@@ -42,22 +42,6 @@ app.get('/api/get/list/:name', function(req, res) {
 	
 });
 
-app.get('/api/admin/test', function(req, res) {
-
-	console.log('the url got hit');
-
-	/*dataManagement.downloadFromDB().then(function(response) {
-
-		res.send(response);
-
-	});*/
-
-	dataManagement.test().then(function(response) {
-		res.send(response);
-	})
-
-});
-
 //open the port for local development
 app.listen(port,function() {
 	console.log('Express server is up and running on port ' + port);
