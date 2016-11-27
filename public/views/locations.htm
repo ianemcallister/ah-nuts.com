@@ -2,7 +2,7 @@
 	
 	<!--Error Message-->
 	<div>
-		<error-message></error-message>	
+		<!--<error-message></error-message>-->	
 	</div>
 
 	<!--Region Finder-->
@@ -13,11 +13,13 @@
 	</div>
 	
 	<!--Location Identifier-->
-	<div ng-if="vm.state.locationLabel.visable">
-		<h2 style='text-align: center'>
-			Where To Find Us In <br> 
+	<div 	ng-if="vm.state.locationLabel.visable"
+			style='text-align: center; color: yellow'>
+		<h3>
+			Where To Find Us In 
 			{{vm.locationsModel[vm.selectedLocation.state].name}}
-		</h2>
+		</h3>
+		<span>Trying to find us <a href="#/locations">elsewhere</a>?</span>
 	</div>
 	
 	<!--Where To Find Us-->
@@ -46,6 +48,8 @@
 			</locations-chrono-view>
 		</div>
 	</div>
+
+	<!--<span style='color:yellow'>{{vm.state}}</span>-->
 
 	<!--Locations Closest To You (Map View)
 	<locations-map-view></locations-map-view>-->

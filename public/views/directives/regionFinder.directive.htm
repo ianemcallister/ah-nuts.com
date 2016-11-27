@@ -1,9 +1,15 @@
 <div>
-	This is the region finder
+	<div class="row">
+		<div 	class="col-xs-12 col-sm-12 col-md-12 col-lg-12"
+				style='text-align: center; color: yellow'>
+				<h3 style='margin-top: 0px'>Where Are You Looking?</h3>
+		</div>
+	</div>
 	<ul>
-		<li ng-repeat='usState in vm.states track by $index'
+		<li style='color:yellow'
+			ng-repeat='usState in vm.states track by $index'
 			ng-click='vm.selectState($index)'>
-			{{usState.name}}
+			<u>{{usState.name}}</u>
 		</li>
 	</ul>
 </div>

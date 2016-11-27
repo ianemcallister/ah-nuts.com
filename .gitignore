@@ -3,6 +3,9 @@
 /server/config/firebase.admin.js
 /server/config/firebaseConfig.json
 
+#ignore JSON files
+/server/JSON/devModel.js
+
 #ignore any images
 
 #ignore node modules

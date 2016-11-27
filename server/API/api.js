@@ -4,8 +4,13 @@ var fs = require('fs');
 var path = require('path');
 var listPaths = require('./listPaths');
 var admin = require("firebase-admin");
+var devModel = {};
 
-//process.env.
+if(process.env.NODE_ENV = 'development') {
+	devModel = require('../JSON/devModel');
+}
+
+//load firebase object values form environment
 var fbVars = {
   "type": process.env.AH_NUTS_FB_TYPE,
   "project_id": process.env.AH_NUTS_FB_PROJECT_ID,
@@ -70,15 +75,24 @@ function getList(list) {
 
 	return new Promise(function(resolve, reject) {
 
-		_read(listPaths[list]).then(function(response) {
+		if(process.env.CONNECTION_STATUS == 'Offline') {
+			//If we're offline though, use the offline resources
+			console.log('using offline resources');
 
-			resolve(response);
+			resolve(devModel['sales']['regions']);
 
-		}).catch(function(error) {
+		} else {
+			//If we're online reach out to firebase database
+			_read(listPaths[list]).then(function(response) {
 
-			reject(error);
+				resolve(response);
 
-		});
+			}).catch(function(error) {
+
+				reject(error);
+
+			});
+		}
 
 	});
 

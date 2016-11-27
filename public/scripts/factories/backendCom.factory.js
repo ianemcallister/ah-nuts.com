@@ -35,7 +35,7 @@ function backend($log, firebase) {
 
 		return new Promise(function(resolve, reject) {
 
-			$log.info('going out to server');
+			//$log.info('going out to server');
 
 			//firebase.test();
 			

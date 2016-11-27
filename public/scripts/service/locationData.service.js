@@ -19,7 +19,7 @@ function locationData($log, backend, firebase) {
 	this.download = function() {
 		var ld = this;
 
-		$log.info('loading Locaiton Data');
+		//$log.info('loading Locaiton Data');
 
 		//call database
 		return new Promise(function(resolve, reject) {
