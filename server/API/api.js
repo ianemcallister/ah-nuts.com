@@ -6,7 +6,18 @@ var listPaths = require('./listPaths');
 var admin = require("firebase-admin");
 
 //process.env.
-var fbVars = {};
+var fbVars = {
+  "type": process.env.AH_NUTS_FB_TYPE,
+  "project_id": process.env.AH_NUTS_FB_PROJECT_ID,
+  "private_key_id": process.env.AH_NUTS_FB_PRIVATE_KEY_ID,
+  "private_key":  process.env.AH_NUTS_FB_PRIVATE_KEY,
+  "client_email": process.env.AH_NUTS_FB_CLIENT_EMAIL,
+  "client_id": process.env.AH_NUTS_FB_CLIENT_ID,
+  "auth_uri": process.env.AH_NUTS_FB_AUTH_URI,
+  "token_uri": process.env.AH_NUTS_FB_TOKEN_URI,
+  "auth_provider_x509_cert_url": process.env.AH_NUTS_FB_AUTH_PROVIDER,
+  "client_x509_cert_url": process.env.AH_NUTS_FB_CLIENT_CERT
+};
 
 // Initialize Firebase
 admin.initializeApp({
