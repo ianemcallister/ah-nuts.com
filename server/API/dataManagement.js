@@ -2,8 +2,17 @@
 
 var fs = require('fs');
 var path = require('path');
-var envVars = require('../config/local.env');
+var envVars = require('../config/local.env') || {
+	APIKEY: AH_NUTS_FB_APIKEY,
+	AUTHDOMAIN: AH_NUTS_FB_AUTHDOMAIN,
+	DATABASEURL: AH_NUTS_FB_DATABASEURL,
+	STORAGEBUCKET: AH_NUTS_FB_STORAGEBUCKET
+};
 var firebase = require("firebase");
+
+/*if(typeof NODE_ENV != 'undefined') {
+	envVars = require('../config/local.env');
+}*/
 
 // Initialize Firebase
 var config = {
