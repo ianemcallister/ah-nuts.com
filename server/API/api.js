@@ -6,7 +6,7 @@ var listPaths = require('./listPaths');
 var admin = require("firebase-admin");
 var devModel = {};
 
-if(process.env.NODE_ENV = 'development') {
+if(process.env.NODE_ENV == 'development') {
 	devModel = require('../JSON/devModel');
 }
 
