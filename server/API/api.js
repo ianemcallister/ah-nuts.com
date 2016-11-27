@@ -90,8 +90,10 @@ function getList(list) {
 			resolve(devModel['sales']['regions']);
 
 		} else {
+			
 			//If we're online reach out to firebase database
 			_read(listPaths[list]).then(function(response) {
+
 
 				resolve(response);
 
