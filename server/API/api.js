@@ -2,9 +2,11 @@
 
 var fs = require('fs');
 var path = require('path');
-var fbVars = require('../config/firebase.admin');
 var listPaths = require('./listPaths');
 var admin = require("firebase-admin");
+
+//process.env.
+var fbVars = {};
 
 // Initialize Firebase
 admin.initializeApp({
