@@ -36,6 +36,10 @@ function _read(path) {
 
 			resolve(snapshot.val());
 
+		}).error(function(error) {
+
+			reject(error);
+
 		});
 
 	});
@@ -44,6 +48,11 @@ function _read(path) {
 function _update() {}
 function _delete() {}
 
+/*
+*	getList(list)
+*	Paramaters: a list name (String)
+*	Returns: a Promise, 
+*/
 function getList(list) {
 
 	return new Promise(function(resolve, reject) {
@@ -51,6 +60,10 @@ function getList(list) {
 		_read(listPaths[list]).then(function(response) {
 
 			resolve(response);
+
+		}).catch(function(error) {
+
+			reject(error);
 
 		});
 

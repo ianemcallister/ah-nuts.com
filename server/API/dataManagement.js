@@ -2,20 +2,24 @@
 
 var fs = require('fs');
 var path = require('path');
-var envVars = require('../config/local.env') || {
+var firebase = require("firebase");
+
+console.log(process.env.AH_NUTS_FIREBASE_EMAIL);
+
+/*var envVars = require('../config/local.env') || {
 	APIKEY: AH_NUTS_FB_APIKEY,
 	AUTHDOMAIN: AH_NUTS_FB_AUTHDOMAIN,
 	DATABASEURL: AH_NUTS_FB_DATABASEURL,
 	STORAGEBUCKET: AH_NUTS_FB_STORAGEBUCKET
-};
-var firebase = require("firebase");
+};*/
+
 
 /*if(typeof NODE_ENV != 'undefined') {
 	envVars = require('../config/local.env');
 }*/
 
 // Initialize Firebase
-var config = {
+/*var config = {
   apiKey: envVars.APIKEY,
   authDomain: envVars.AUTHDOMAIN,
   databaseURL: envVars.DATABASEURL,
@@ -23,7 +27,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var database = firebase.database();
+var database = firebase.database();*/
 
 var DataManagement = {
 	_loadJSONFile:_loadJSONFile,

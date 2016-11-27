@@ -2,9 +2,10 @@
 //declare dependencies
 var express = require('express');
 var bodyParser = require('body-parser');
-var envVars = require('./config/local.env');
+//var envVars = require('./config/local.env');
 var API = require('./API/api');
 var dataManagement = require('./API/dataManagement.js');
+var defaultLists = require('./JSON/defaultLists')
 
 //define the app
 var app = express();
@@ -26,7 +27,8 @@ app.use(express.static('dist'));
 //define the routes
 app.get('/api/get/list/:name', function(req, res) {
 	
-	console.log('hitting the server:', req.params.name );
+	//note the url hit
+	console.log('/api/get/list/', req.params.name );
 
 	//call out to the FB db
 	API.getList(req.params.name)
@@ -36,7 +38,7 @@ app.get('/api/get/list/:name', function(req, res) {
 
 	}).catch(function(error) {
 
-		res.send({"error": "There Was An Error"});
+		res.send({"Error": error, "Default List": defaultLists['Retail']});
 
 	});
 	
@@ -45,6 +47,7 @@ app.get('/api/get/list/:name', function(req, res) {
 //open the port for local development
 app.listen(port,function() {
 	console.log('Express server is up and running on port ' + port);
+	console.log('Running in ' + process.env.NODE_ENV + ' environment');
 });
 
 //export the module
