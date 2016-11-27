@@ -23,13 +23,17 @@
 	</div>
 	
 	<!--Where To Find Us-->
-	<div ng-if='vm.state.everyDayLocations.visable'>
+	<div 	ng-if='vm.state.everyDayLocations.visable'
+			class='col-xs-12 col-sm-12 col-md-12 col-lg-12'
+			style='text-align: center; color: yellow'>
 		<h3>Everyday Locations:</h3>
 	</div>
 
-	<div ng-if='vm.state.eventsAndMarkets.visable'>
+	<div 	ng-if='vm.state.eventsAndMarkets.visable'
+			class='col-xs-12 col-sm-12 col-md-12 col-lg-12'
+			style='color: yellow'>
 		
-		<h3>Events & Markets:</h3>
+		<h3>Events & Markets</h3>
 		<!--Today-->
 		<div ng-if="vm.state.locationsToday.visable">
 			<locations-today selected-location='vm.locationsModel[vm.selectedLocation.state].events'>
@@ -49,7 +53,7 @@
 		</div>
 	</div>
 
-	<!--<span style='color:yellow'>{{vm.state}}</span>-->
+	<!--<span style='color:yellow'>{{vm.locationsModel}}</span>-->
 
 	<!--Locations Closest To You (Map View)
 	<locations-map-view></locations-map-view>-->

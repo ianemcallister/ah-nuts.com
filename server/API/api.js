@@ -24,6 +24,8 @@ var fbVars = {
   "client_x509_cert_url": process.env.AH_NUTS_FB_CLIENT_CERT
 };
 
+console.log(fbVars);
+
 // Initialize Firebase
 admin.initializeApp({
   credential: admin.credential.cert(fbVars),
@@ -48,17 +50,23 @@ function _read(path) {
 
 	var ref = db.ref(path);
 
+	console.log('going out to firebase. Path:', path);
+
 	return new Promise(function(resolve, reject) {
 
 		ref.once('value', function(snapshot) {
 
+			console.log('success:', snapshot.val());
+
 			resolve(snapshot.val());
 
-		}).error(function(error) {
+		})/*.catch(function(error) {
+
+			console.log('error:', error);
 
 			reject(error);
 
-		});
+		})*/;
 
 	});
 
