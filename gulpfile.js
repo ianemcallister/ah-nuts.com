@@ -7,6 +7,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var ngAnnotate = require('gulp-ng-annotate');
+var babel = require('gulp-babel');
 
 gulp.task('dist', [
 	'copy-html',
@@ -36,6 +37,9 @@ gulp.task('scripts-dist', function() {
 		.pipe(sourcemaps.init())
 		.pipe(concat('bundle.js'))
 		.pipe(ngAnnotate())
+		.pipe(babel({
+            presets: ['es2015']
+        }))
 		.pipe(uglify())
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('dist/scripts'));
