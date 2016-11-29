@@ -5,12 +5,31 @@ angular
 backend.$inject = ['$log', '$http', 'firebase'];
 
 /* @ngInject */
-function backend($log, firebase) {
+function backend($log, $http, firebase) {
 
 	var backendComElements = {
+		_httpGet: _httpGet,
+		_get:_get,
+		_getJSON:_getJSON,
 		get: get,
 		getLocations: getLocations
 	};
+
+	function _httpGet(url) {
+		return new Promise(function(resolve, reject) {
+
+			$http.get(url).then(function(response) {
+
+				resolve(response.data);
+
+			}, function myError(response) {
+
+				reject(response);
+
+			});
+
+		})
+	}
 
 	function _get(url) {
 		return fetch(url);
@@ -39,7 +58,7 @@ function backend($log, firebase) {
 
 			//firebase.test();
 			
-			_getJSON('/api/get/list/regions').then(function(response) {
+			_httpGet('/api/get/list/regions').then(function(response) {
 				
 				//notify the user
 				//$log.info('success:', response);

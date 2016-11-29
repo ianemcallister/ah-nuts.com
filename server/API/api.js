@@ -24,7 +24,7 @@ var fbVars = {
   "client_x509_cert_url": process.env.AH_NUTS_FB_CLIENT_CERT
 };
 
-console.log(fbVars);
+//console.log(fbVars);
 
 // Initialize Firebase
 admin.initializeApp({
